@@ -1,6 +1,6 @@
 [book]
 authors = ["XUKUNYUAN"]
-language = "en"
+language = "chinese"
 multilingual = false
 src = "src"
-title = "test"
+title = "第一期傲来操作系统训练营导学阶段引导"
