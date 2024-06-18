@@ -1,0 +1,1 @@
+# eulix-camp-book-stage0
