@@ -4,3 +4,13 @@ language = "chinese"
 multilingual = false
 src = "src"
 title = "第一期傲来操作系统训练营导学阶段引导"
+
+[preprocessor]
+
+[preprocessor.catppuccin]
+assets_version = "2.1.0" # DO NOT EDIT: Managed by `mdbook-catppuccin install`
+
+[output]
+
+[output.html]
+additional-css = ["./theme/catppuccin.css", "./theme/catppuccin-admonish.css"]
