@@ -2,7 +2,7 @@
 
 为了顺利进行导学阶段的实验，为之后正式学习的实验做好准备，需要先进行一些简单的环境配置。
 
-我们推荐在 Linux 环境下完成实验，如果不在 Linux 环境下完成实验可能会遇到部分问题，具体可参考[第三章：如何在非 Linux 环境下完成实验](ch3/ch3-04.md)。
+我们推荐在 Linux 环境下完成实验，如果不在 Linux 环境下完成实验可能会遇到部分问题，具体可参考[如何在非 Linux 环境中完成实验](https://kunyuanxu-star.github.io/eulix-camp-book-stage0/ch3/ch3-04.html)。
 
 ## 配置 Git
 
