@@ -12,13 +12,13 @@
 
 Ubuntu/Debian 发行版安装 Git：
 
-```shell
+```bash
 sudo apt install git
 ```
 
 Arch 发行版安装 Git：
 
-```shell
+```bash
 sudo pacman -Syu git
 ```
 
@@ -28,7 +28,7 @@ https://gitforwindows.org/
 
 在完成 Git 的安装后需要对 Git 进行基本的配置：
 
-```shell
+```bash
 git config --global user.name "你的 gitee 账户名/自定义"
 git config --global user.email "你的 gitee 账户默认的邮箱地址/常用邮箱地址"
 ```
@@ -41,13 +41,13 @@ git config --global user.email "你的 gitee 账户默认的邮箱地址/常用�
 
 Ubuntu/Debain 发行版配置：
 
-```shell
+```bash
 sudo apt install build-essential gdb #安装 GNU 工具链与调试工具
 ```
 
 Arch 发行版配置：
 
-```shell
+```bash
 sudo pacman -S base-devel gdb 
 ```
 
@@ -57,7 +57,7 @@ mingw 官网：https://www.mingw-w64.org/
 
 在完成安装之后，可使用如下指令检测 gcc 是否被正确配置：
 
-```shell
+```bash
 gcc --version
 ```
 
