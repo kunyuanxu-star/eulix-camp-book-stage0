@@ -174,6 +174,87 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="常用-git-指令"><a class="header" href="#常用-git-指令">常用 Git 指令</a></h2>
+<p>Git 是一个强大的版本控制系统，广泛应用于软件开发中。以下是一些常用的 Git 指令，它们是日常工作中不可或缺的工具。</p>
+<h5 id="1-初始化仓库"><a class="header" href="#1-初始化仓库">1. 初始化仓库</a></h5>
+<pre><code class="language-bash">git init
+</code></pre>
+<p>这个命令会在当前目录创建一个新的 Git 仓库。执行后，目录下会生成一个 <code>.git</code> 子目录，用于存储仓库的元数据和对象数据库。</p>
+<h5 id="2-克隆仓库"><a class="header" href="#2-克隆仓库">2. 克隆仓库</a></h5>
+<pre><code class="language-bash">git clone &lt;repository_url&gt;
+</code></pre>
+<p>克隆远程仓库到本地。<code>&lt;repository_url&gt;</code> 可以是 HTTPS、SSH 或 Git 协议的 URL。例如：</p>
+<pre><code class="language-bash">git clone https://gitee.com/username/repository.git
+</code></pre>
+<p>克隆完成后，你将拥有一个与远程仓库完全相同的本地副本。</p>
+<h5 id="3-添加文件"><a class="header" href="#3-添加文件">3. 添加文件</a></h5>
+<pre><code class="language-bash">git add &lt;file&gt;
+</code></pre>
+<p>这个命令将工作目录中的文件添加到暂存区（staging area），准备进行下一次提交。例如：</p>
+<pre><code class="language-bash">git add README.md
+</code></pre>
+<p>你也可以使用 <code>git add .</code> 来添加所有更改过的文件。</p>
+<h5 id="4-提交更改"><a class="header" href="#4-提交更改">4. 提交更改</a></h5>
+<pre><code class="language-bash">git commit -m "commit message"
+</code></pre>
+<p>提交暂存区的文件到本地仓库，<code>commit message</code> 是对这次提交的描述。例如：</p>
+<pre><code class="language-bash">git commit -m "Add initial README file"
+</code></pre>
+<h5 id="5-查看状态"><a class="header" href="#5-查看状态">5. 查看状态</a></h5>
+<pre><code class="language-bash">git status
+</code></pre>
+<p>这个命令显示工作目录和暂存区的状态。你可以看到哪些文件被修改，哪些文件被添加到暂存区，以及哪些文件未被跟踪。</p>
+<h5 id="6-查看提交历史"><a class="header" href="#6-查看提交历史">6. 查看提交历史</a></h5>
+<pre><code class="language-bash">git log
+</code></pre>
+<p>这个命令显示仓库的提交历史。默认情况下，它会显示每个提交的作者、提交时间、提交信息以及提交的哈希值。</p>
+<h5 id="7-推送更改"><a class="header" href="#7-推送更改">7. 推送更改</a></h5>
+<pre><code class="language-bash">git push origin &lt;branch_name&gt;
+</code></pre>
+<p>这个命令将本地仓库的提交推送到远程仓库。<code>&lt;branch_name&gt;</code> 是你想要推送的分支名称。例如：</p>
+<pre><code class="language-bash">git push origin master
+</code></pre>
+<h5 id="8-拉取更新"><a class="header" href="#8-拉取更新">8. 拉取更新</a></h5>
+<pre><code class="language-bash">git pull origin &lt;branch_name&gt;
+</code></pre>
+<p>这个命令从远程仓库拉取更新并尝试合并到当前分支。<code>&lt;branch_name&gt;</code> 是远程分支的名称。例如：</p>
+<pre><code class="language-bash">git pull origin develop
+</code></pre>
+<h5 id="9-创建分支"><a class="header" href="#9-创建分支">9. 创建分支</a></h5>
+<pre><code class="language-bash">git branch &lt;branch_name&gt;
+</code></pre>
+<p>这个命令创建一个新分支，但不会自动切换到该分支。例如：</p>
+<pre><code class="language-bash">git branch feature-x
+</code></pre>
+<h5 id="10-切换分支"><a class="header" href="#10-切换分支">10. 切换分支</a></h5>
+<pre><code class="language-bash">git checkout &lt;branch_name&gt;
+</code></pre>
+<p>这个命令切换到指定的分支。例如：</p>
+<pre><code class="language-bash">git checkout feature-x
+</code></pre>
+<p>你也可以使用 <code>git checkout -b &lt;branch_name&gt;</code> 来创建并切换到新分支。</p>
+<h5 id="11-合并分支"><a class="header" href="#11-合并分支">11. 合并分支</a></h5>
+<pre><code class="language-bash">git merge &lt;branch_name&gt;
+</code></pre>
+<p>将指定分支的更改合并到当前分支。</p>
+<h5 id="12-删除分支"><a class="header" href="#12-删除分支">12. 删除分支</a></h5>
+<pre><code class="language-bash">git branch -d &lt;branch_name&gt;
+</code></pre>
+<p>删除指定的分支。</p>
+<p>注意，如果分支有未合并的更改，Git 会阻止你删除它。</p>
+<h5 id="13-撤销更改"><a class="header" href="#13-撤销更改">13. 撤销更改</a></h5>
+<pre><code class="language-bash">git checkout -- &lt;file&gt;
+</code></pre>
+<p>这个命令撤销对文件的本地更改，将其恢复到最后一次提交的状态。例如：</p>
+<pre><code class="language-bash">git checkout -- README.md
+</code></pre>
+<h5 id="14-撤销暂存区的更改"><a class="header" href="#14-撤销暂存区的更改">14. 撤销暂存区的更改</a></h5>
+<pre><code class="language-bash">git reset HEAD &lt;file&gt;
+</code></pre>
+<p>将文件从暂存区移出，但保留本地更改。</p>
+<h5 id="15-撤销提交"><a class="header" href="#15-撤销提交">15. 撤销提交</a></h5>
+<pre><code class="language-bash">git reset --hard &lt;commit_hash&gt;
+</code></pre>
+<p>撤销到指定的提交，<code>&lt;commit_hash&gt;</code> 是提交的哈希值。这将重置工作目录和暂存区，使其与指定的提交完全一致。</p>
 
                     </main>
 
