@@ -176,7 +176,7 @@
                     <main>
                         <h1 id="前言"><a class="header" href="#前言">前言</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="介绍"><a class="header" href="#介绍">介绍</a></h1>
-<p>本文档主要提供第一期傲来操作系统训练营导学阶段的学习引导</p>
+<p>傲来操作系统（EulixOS）是由中科院软件所 / 中科南京软件技术研究院团队基于 openEuler 打造的操作系统发行版，其开发目标是集成软件所的最新科研成果，面向开源爱好者、科研人员和学生，为在线服务、高性能计算、AI 计算等使用场景提供一款安全、易用的操作系统。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="环境配置"><a class="header" href="#环境配置">环境配置</a></h1>
 <p>为了顺利进行导学阶段的实验，为之后正式学习的实验做好准备，需要先进行一些简单的环境配置。</p>
 <p>我们推荐在 Linux 环境下完成实验，如果不在 Linux 环境下完成实验可能会遇到部分问题，具体可参考<a href="ch3-04.html">如何在非 Linux 环境中完成实验</a>。</p>
@@ -282,8 +282,68 @@ git config --global user.email "你的 gitee 账户默认的邮箱地址/常用�
 <tr><td>26</td><td>系统调用</td><td>45分钟</td><td><a href="https://www.bilibili.com/video/BV1Q5411w7z5?p=26">链接</a></td></tr>
 </tbody></table>
 </div><div style="break-before: page; page-break-before: always;"></div><h2 id="导学课程学习资料汇总"><a class="header" href="#导学课程学习资料汇总">导学课程学习资料汇总</a></h2>
+<h3 id="课程相关学习资料"><a class="header" href="#课程相关学习资料">课程相关学习资料</a></h3>
+<p><strong>导学阶段课程课件</strong></p>
+<p><a href="https://gitee.com/unicornx/riscv-operating-system-mooc/tree/main/slides">riscv-operating-system-mooc/slides</a></p>
+<p><strong>课程配套实验</strong></p>
+<p><a href="https://gitee.com/unicornx/riscv-operating-system-mooc">riscv-operating-system-mooc</a></p>
+<p><strong>一个可运行课程实验的 RISCV CPU</strong></p>
+<p><a href="https://gitee.com/lizhanpeng2022/cpu_prj">riscv-v-cpu</a></p>
+<p><strong>课程代码到物理机的移植记录</strong></p>
+<p><a href="https://gitee.com/unicornx/riscv-operating-system-mooc/issues/I64EEQ">riscv-operating-system-mooc/issues/I64EEQ</a></p>
+<h3 id="其余学习资料"><a class="header" href="#其余学习资料">其余学习资料</a></h3>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="开营仪式教学安排与资料汇总"><a class="header" href="#开营仪式教学安排与资料汇总">开营仪式教学安排与资料汇总</a></h2>
+<p><strong>训练营开营启动会</strong></p>
+<p>会议时间：2024/06/02 20:00<a href="https://meeting.tencent.com/user-center/shared-record-info?id=cea43f5d-e061-43dd-8281-5ca765a42d7c&amp;from=3&amp;record_type=2">视频回放(密码：0602)</a></p>
+<p><strong>训练营开营启动会安排</strong></p>
+<ul>
+<li>
+<p>8:00 主持人唐涵主持开场，介绍与会老师与嘉宾</p>
+</li>
+<li>
+<p>8:02  武延军所长致辞</p>
+</li>
+<li>
+<p>8:07  陈渝老师致辞</p>
+</li>
+<li>
+<p>8:12  于佳耕老师致辞，介绍 RISC-V 当前生态及未来发展方向展望</p>
+</li>
+<li>
+<p>8:27  常秉善介绍本次训练营报名及课程开设介绍</p>
+</li>
+<li>
+<p>8:42  王凡介绍本次训练营的基础与专业阶段并分享学习经验</p>
+</li>
+<li>
+<p>8:57  姬晨晨介绍本次训练营项目阶段的选题方向和实践</p>
+</li>
+<li>
+<p>9:12  于佳耕老师总结寄语</p>
+</li>
+<li>
+<p>9:15  主持人介绍组队宣传，及引导训练营问题答疑</p>
+</li>
+</ul>
+<p><strong>训练营教学安排</strong></p>
+<p><img src="resource/ch1/jiaoxueanpai.png" alt="" /></p>
+<p><strong>傲来操作系统（EulixOS）官网</strong></p>
+<p><a href="https://eulixos.com/">中科傲来</a></p>
+<p><a href="https://eulixos.com/#/download">傲来操作系统下载</a></p>
+<p><strong>傲来操作系统1.0使用手册</strong></p>
+<p><a href="https://eulixos.com/userguide/">EulixOS1.0使用手册</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="教学系统常见问题与解决方案"><a class="header" href="#教学系统常见问题与解决方案">教学系统常见问题与解决方案</a></h2>
+<h3 id="1pc-端教室画面显示异常"><a class="header" href="#1pc-端教室画面显示异常">1.pc 端教室画面显示异常</a></h3>
+<p><img src="resource/ch1/05-1.png" alt="" /></p>
+<p>目前发现在 edge 浏览器中可能出现分享页面显示不全的情况，使用 Chrome 浏览器可以解决这一问题。</p>
+<p><strong>建议在 PC 端使用 Chrome 浏览器听课，防止出现类似问题。</strong></p>
+<h3 id="2组队页面无法自己组建队伍"><a class="header" href="#2组队页面无法自己组建队伍">2.组队页面无法自己组建队伍</a></h3>
+<p>一般每阶段限制每人只能加入一支队伍，如果产生类似情况请先确认自己是否加入了或已经创建了队伍，如存在类似情况，请先退出/解散当前队伍，而后重新创建。</p>
+<p>如果不存在类似情况请确认已经登录到教学系统，如确认后依然无法创建队伍请联系管理员。</p>
+<h3 id="3进入教室后发现没有声音"><a class="header" href="#3进入教室后发现没有声音">3.进入教室后发现没有声音</a></h3>
+<p>请确认是否正确给予了教室页面需要的权限，或检查本地设备是否正确配置，如感觉授课老师声音较小可在聊天区向老师提出。</p>
+<h3 id="4晋级榜单上的成绩没有准确链接到用户信息"><a class="header" href="#4晋级榜单上的成绩没有准确链接到用户信息">4.晋级榜单上的成绩没有准确链接到用户信息</a></h3>
+<p>请确保在个人信息页面正确填写了 GitHubName/GiteeName，确认正确填写后再做一次提交便可正确链接到用户信息。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="基本-git-使用与-gitee-流水线入门"><a class="header" href="#基本-git-使用与-gitee-流水线入门">基本 Git 使用与 Gitee 流水线入门</a></h1>
 <p>本章节介绍基本的 Git 与 Gitee 使用，便于大家展开实验。</p>
 <ul>
