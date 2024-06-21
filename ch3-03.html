@@ -174,6 +174,116 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="make-基本使用与-makefile"><a class="header" href="#make-基本使用与-makefile">make 基本使用与 Makefile</a></h2>
+<p>在软件开发中，自动化构建过程是提高效率的关键。<code>make</code> 是一个在类Unix系统中广泛使用的构建自动化工具，它通过读取 <code>Makefile</code> 中的规则来自动化编译和链接程序。本节将介绍 <code>make</code> 的基本使用和 <code>Makefile</code> 的编写。</p>
+<h3 id="makefile-基础"><a class="header" href="#makefile-基础">Makefile 基础</a></h3>
+<p><code>Makefile</code> 是一个文本文件，它包含了一系列规则，每条规则定义了目标文件、依赖文件和生成目标文件的命令。</p>
+<ul>
+<li>
+<p>规则格式：</p>
+<pre><code class="language-Makefile">target: dependencies
+        command
+        ...
+</code></pre>
+<ul>
+<li><code>target</code>：通常是需要生成的目标文件。</li>
+<li><code>dependencies</code>：生成目标文件所依赖的文件。</li>
+<li><code>command</code>：生成目标文件的命令。</li>
+</ul>
+</li>
+</ul>
+<h3 id="基本-makefile-示例"><a class="header" href="#基本-makefile-示例">基本 Makefile 示例</a></h3>
+<p>假设我们有一个简单的C语言项目，包含两个源文件 <code>main.c</code> 和 <code>hello.c</code>，以及一个头文件 <code>hello.h</code>。我们可以创建一个 <code>Makefile</code> 来编译这个项目。</p>
+<ul>
+<li>
+<p>Makefile 示例：</p>
+<pre><code class="language-Makefile"># 定义变量
+CC = gcc
+CFLAGS = -Wall -g
+
+# 默认目标
+all: hello
+
+# 目标依赖和命令
+hello: main.o hello.o
+        $(CC) $(CFLAGS) -o hello main.o hello.o
+
+# 编译规则
+main.o: main.c hello.h
+        $(CC) $(CFLAGS) -c main.c
+
+hello.o: hello.c hello.h
+        $(CC) $(CFLAGS) -c hello.c
+
+# 清理规则
+clean:
+        rm -f hello *.o
+</code></pre>
+</li>
+</ul>
+<h3 id="make-命令的使用"><a class="header" href="#make-命令的使用">make 命令的使用</a></h3>
+<p><code>make</code> 命令不仅可以用来编译项目，还可以用来执行 <code>Makefile</code> 中定义的其他任务。</p>
+<ul>
+<li>
+<p><strong>指定目标</strong>：</p>
+<pre><code class="language-bash">make target
+</code></pre>
+<p>这里的 <code>target</code> 是 <code>Makefile</code> 中定义的一个目标。如果不指定目标，<code>make</code> 会默认执行第一个目标（通常是 <code>all</code>）。</p>
+</li>
+<li>
+<p><strong>递归 make</strong>： 在大型项目中，可能会有多个子目录，每个子目录都有自己的 <code>Makefile</code>。可以使用 <code>make -C</code> 命令来递归地调用子目录中的 <code>make</code>。</p>
+<pre><code class="language-bash">make -C subdir
+</code></pre>
+</li>
+<li>
+<p><strong>显示命令</strong>： 默认情况下，<code>make</code> 在执行命令时不会显示命令本身，只会显示输出。使用 <code>-n</code> 或 <code>--just-print</code> 选项可以只显示命令而不执行。</p>
+<pre><code class="language-bash">make -n
+</code></pre>
+</li>
+<li>
+<p><strong>忽略错误</strong>： 使用 <code>-k</code> 或 <code>--keep-going</code> 选项可以让 <code>make</code> 在遇到错误时继续执行后续的命令。</p>
+<pre><code class="language-bash">make -k
+</code></pre>
+</li>
+</ul>
+<h3 id="makefile-的高级特性"><a class="header" href="#makefile-的高级特性">Makefile 的高级特性</a></h3>
+<p><code>Makefile</code> 提供了许多高级特性，使得构建过程更加灵活和强大。</p>
+<ul>
+<li>
+<p><strong>自动变量</strong>： <code>make</code> 提供了一些特殊的自动变量，如 <code>$@</code>（目标文件）、<code>$&lt;</code>（第一个依赖文件）和 <code>$^</code>（所有依赖文件）。</p>
+<pre><code class="language-Makefile">%.o: %.c
+        $(CC) $(CFLAGS) -c $&lt; -o $@
+</code></pre>
+</li>
+<li>
+<p><strong>伪目标</strong>： 伪目标不是真正的文件，而是代表一组操作。例如，<code>clean</code> 通常用来清理编译生成的文件。</p>
+<pre><code class="language-Makefile">.PHONY: clean
+clean:
+        rm -f hello *.o
+</code></pre>
+</li>
+<li>
+<p><strong>内置函数</strong>： <code>make</code> 提供了许多内置函数，如 <code>wildcard</code>、<code>patsubst</code>、<code>subst</code> 等。</p>
+<pre><code class="language-makefile">SRCS := $(wildcard *.c)
+OBJS := $(patsubst %.c, %.o, $(SRCS))
+</code></pre>
+</li>
+<li>
+<p><strong>条件语句</strong>： 条件语句允许根据不同条件执行不同的命令。</p>
+<pre><code class="language-makefile">ifeq ($(OS), Windows_NT)
+    RM := del
+else
+    RM := rm -f
+endif
+</code></pre>
+</li>
+<li>
+<p><strong>宏定义</strong>： 宏定义允许在 <code>Makefile</code> 中定义复杂的表达式，并在需要时展开。</p>
+<pre><code class="language-makefile">MACRO = $(CC) $(CFLAGS) -c $&lt; -o $@
+%.o: %.c
+        $(MACRO)
+</code></pre>
+</li>
+</ul>
 
                     </main>
 

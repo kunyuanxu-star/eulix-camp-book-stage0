@@ -174,6 +174,226 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="c-语言基本语法"><a class="header" href="#c-语言基本语法">C 语言基本语法</a></h2>
+<p>C语言是一种广泛使用的编程语言，以其效率和灵活性而著称。本节将介绍C语言的基本语法，为后续的实验和开发工作打下基础。</p>
+<h3 id="c语言简介"><a class="header" href="#c语言简介">C语言简介</a></h3>
+<p>C语言由Dennis Ritchie在1972年开发，最初是为了编写UNIX操作系统而设计的。C语言具有简洁的语法和强大的功能，使其成为系统编程、嵌入式系统和高级应用程序的首选语言。</p>
+<h3 id="基本数据类型"><a class="header" href="#基本数据类型">基本数据类型</a></h3>
+<p>C语言的基本数据类型包括整型、浮点型、字符型和布尔型。每种类型都有其特定的内存占用和取值范围。</p>
+<ul>
+<li><strong>整型</strong>：<code>int</code> 通常占用4个字节，但也可以是2个字节，这取决于编译器和系统。<code>short</code> 和 <code>long</code> 可以用来指定不同大小的整数。
+<ul>
+<li><code>short int</code>：通常占用2个字节。</li>
+<li><code>long int</code>：通常占用4个或8个字节。</li>
+<li><code>long long int</code>：通常占用8个字节。</li>
+</ul>
+</li>
+<li><strong>浮点型</strong>：<code>float</code> 和 <code>double</code> 分别用于表示单精度和双精度浮点数。
+<ul>
+<li><code>float</code>：通常占用4个字节。</li>
+<li><code>double</code>：通常占用8个字节。</li>
+</ul>
+</li>
+<li><strong>字符型</strong>：<code>char</code> 用于存储单个字符，占用1个字节。
+<ul>
+<li><code>char</code>：占用1个字节，用于存储字符。</li>
+</ul>
+</li>
+<li><strong>布尔型</strong>：<code>_Bool</code> 用于存储布尔值（true或false），占用1个字节。
+<ul>
+<li><code>_Bool</code>：占用1个字节，用于存储布尔值。</li>
+</ul>
+</li>
+</ul>
+<h3 id="变量和常量"><a class="header" href="#变量和常量">变量和常量</a></h3>
+<p>变量是存储数据值的容器，而常量是固定值。</p>
+<ul>
+<li>
+<p><strong>变量声明和初始化</strong>：</p>
+<pre><code class="language-c">int age = 25; // 声明一个整型变量并初始化为25
+float pi = 3.14159; // 声明一个浮点型变量并初始化为3.14159
+char letter = 'A'; // 声明一个字符型变量并初始化为'A'
+</code></pre>
+</li>
+<li>
+<p><strong>常量声明</strong>：</p>
+<pre><code class="language-c">const int MAX_VALUE = 100; // 声明一个整型常量
+const float PI = 3.14159; // 声明一个浮点型常量
+</code></pre>
+</li>
+</ul>
+<h3 id="运算符"><a class="header" href="#运算符">运算符</a></h3>
+<p>C语言提供了丰富的运算符，用于执行各种操作。</p>
+<ul>
+<li>
+<p><strong>算术运算符</strong>：</p>
+<pre><code class="language-c">int a = 10, b = 3;
+int sum = a + b; // 加法
+int diff = a - b; // 减法
+int product = a * b; // 乘法
+float quotient = (float)a / b; // 除法
+int remainder = a % b; // 取模
+</code></pre>
+</li>
+<li>
+<p><strong>关系运算符</strong>：</p>
+<pre><code class="language-c">int x = 5, y = 10;
+if (x == y) { // 等于
+    printf("x is equal to y\n");
+}
+if (x != y) { // 不等于
+    printf("x is not equal to y\n");
+}
+if (x &gt; y) { // 大于
+    printf("x is greater than y\n");
+}
+if (x &lt; y) { // 小于
+    printf("x is less than y\n");
+}
+if (x &gt;= y) { // 大于等于
+    printf("x is greater than or equal to y\n");
+}
+if (x &lt;= y) { // 小于等于
+    printf("x is less than or equal to y\n");
+}
+</code></pre>
+</li>
+<li>
+<p><strong>逻辑运算符</strong>：</p>
+<pre><code class="language-c">int p = 1, q = 0;
+if (p &amp;&amp; q) { // 逻辑与
+    printf("Both p and q are true\n");
+}
+if (p || q) { // 逻辑或
+    printf("Either p or q is true\n");
+}
+if (!p) { // 逻辑非
+    printf("p is false\n");
+}
+</code></pre>
+</li>
+<li>
+<p><strong>位运算符</strong>：</p>
+<pre><code class="language-c">int m = 12, n = 5;
+int and_result = m &amp; n; // 按位与
+int or_result = m | n; // 按位或
+int xor_result = m ^ n; // 按位异或
+int not_result = ~m; // 按位取反
+int left_shift = m &lt;&lt; 1; // 左移
+int right_shift = m &gt;&gt; 1; // 右移
+</code></pre>
+</li>
+</ul>
+<h3 id="控制结构"><a class="header" href="#控制结构">控制结构</a></h3>
+<p>控制结构用于控制程序的执行流程。</p>
+<ul>
+<li>
+<p><strong>条件语句</strong>：</p>
+<pre><code class="language-c">int score = 85;
+if (score &gt;= 90) {
+    printf("优秀\n");
+} else if (score &gt;= 80) {
+    printf("良好\n");
+} else if (score &gt;= 70) {
+    printf("中等\n");
+} else if (score &gt;= 60) {
+    printf("及格\n");
+} else {
+    printf("不及格\n");
+}
+</code></pre>
+</li>
+<li>
+<p><strong>循环语句</strong>：</p>
+<pre><code class="language-c">// for循环
+for (int i = 0; i &lt; 5; i++) {
+    printf("%d\n", i);
+}
+// while循环
+int j = 0;
+while (j &lt; 5) {
+    printf("%d\n", j);
+    j++;
+}
+// do-while循环
+int k = 0;
+do {
+    printf("%d\n", k);
+    k++;
+} while (k &lt; 5);
+</code></pre>
+</li>
+<li>
+<p><strong>跳转语句</strong>：</p>
+<pre><code class="language-c">// break语句
+for (int i = 0; i &lt; 10; i++) {
+    if (i == 5) {
+        break; // 跳出循环
+    }
+    printf("%d\n", i);
+}
+// continue语句
+for (int i = 0; i &lt; 10; i++) {
+    if (i == 5) {
+        continue; // 跳过当前循环的剩余部分，进入下一次循环
+    }
+    printf("%d\n", i);
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="函数"><a class="header" href="#函数">函数</a></h3>
+<p>函数是C语言中的基本构建块，用于封装可重用的代码。</p>
+<ul>
+<li>
+<p>函数定义和调用：</p>
+<pre><code class="language-c">// 函数定义
+int add(int a, int b) {
+    return a + b;
+}
+// 函数调用
+int result = add(3, 4);
+printf("The result is %d\n", result);
+</code></pre>
+</li>
+</ul>
+<h3 id="数组和指针"><a class="header" href="#数组和指针">数组和指针</a></h3>
+<p>数组用于存储相同类型的多个元素，而指针是存储变量地址的变量。</p>
+<ul>
+<li>
+<p><strong>数组操作</strong>：</p>
+<pre><code class="language-c">int numbers[5] = {1, 2, 3, 4, 5};
+for (int i = 0; i &lt; 5; i++) {
+    printf("%d\n", numbers[i]);
+}
+</code></pre>
+</li>
+<li>
+<p><strong>指针操作</strong>：</p>
+<pre><code class="language-c">int *p;
+int age = 25;
+p = &amp;age; // 将age的地址赋给指针p
+printf("The value of age is %d\n", *p); // 通过指针访问age的值
+</code></pre>
+</li>
+</ul>
+<h3 id="结构体和联合体"><a class="header" href="#结构体和联合体">结构体和联合体</a></h3>
+<p>结构体允许用户定义自己的数据类型，它可以将不同类型的数据组合在一起。联合体是一种特殊的结构体，它允许在相同的内存位置存储不同的数据类型。</p>
+<ul>
+<li>
+<p>结构体定义和使用：</p>
+<pre><code class="language-c">// 结构体定义
+struct Person {
+    char name[50];
+    int age;
+};
+// 结构体使用
+struct Person person1;
+strcpy(person1.name, "Alice");
+person1.age = 30;
+printf("Name: %s, Age: %d\n", person1.name, person1.age);
+</code></pre>
+</li>
+</ul>
 
                     </main>
 

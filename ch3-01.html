@@ -174,6 +174,159 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="linux-使用入门与配置"><a class="header" href="#linux-使用入门与配置">Linux 使用入门与配置</a></h2>
+<p>Linux 是一个广泛使用的开源操作系统，以其稳定性、安全性和灵活性而闻名。本节将介绍 Linux 的基本使用和配置，帮助读者为后续的实验做好准备。</p>
+<h3 id="linux-简介"><a class="header" href="#linux-简介">Linux 简介</a></h3>
+<p>Linux 最初由 Linus Torvalds 在1991年开发，它基于 Unix 操作系统。Linux 的核心（Kernel）是操作系统的核心部分，负责管理硬件资源和提供系统服务。Linux 操作系统通常包括核心以及一系列的系统工具、应用软件和图形用户界面（GUI）。</p>
+<h3 id="安装-linux"><a class="header" href="#安装-linux">安装 Linux</a></h3>
+<p>在开始使用 Linux 之前，首先需要安装一个 Linux 发行版。常见的 Linux 发行版包括 Ubuntu、Fedora、Debian 和 ArchLinux 等。</p>
+<p>我们推荐使用 Ubuntu 发行版作为实验环境。</p>
+<p><strong>物理机 Linux</strong></p>
+<ul>
+<li>首先，各位需要根据个人需求和偏好选择一个 Linux 发行版安装，一般来说不同的 Linux 发行版其最明显的区别在于软件包管理器的不同，例如 Debian 系发行版主要采用 apt 进行软件包管理，Arch 发行版则主要采用 pacman 进行软件包管理。
+<ul>
+<li><a href="https://linux.cn/article-14547-1.html">最适合程序员的 10 款 Linux 发行版</a></li>
+<li><a href="https://blog.csdn.net/tugouxp/article/details/129459799">Linux 各种发行版介绍</a></li>
+</ul>
+</li>
+<li>确定好自己要使用的发行版之后，一般需要到其官网下载安装镜像。
+<ul>
+<li><a href="https://cn.ubuntu.com/download">Ubuntu 下载</a></li>
+<li><a href="https://archlinux.org/download/">ArchLinux 下载</a></li>
+</ul>
+</li>
+<li>创建启动盘：使用工具如 Rufus 或 Etcher 将 ISO 镜像写入 USB 驱动器或 DVD。</li>
+<li>启动安装程序：通过启动盘启动计算机，并按照屏幕上的指示进行安装。
+<ul>
+<li><a href="https://blog.csdn.net/weixin_70137390/article/details/124724957">Ubuntu 安装教程</a></li>
+<li><a href="https://archlinuxstudio.github.io/ArchLinuxTutorial/#/">ArchLinux 安装教程</a></li>
+<li><a href="https://www.cnblogs.com/Tsingwaa/articles/16254542.html">manajro 安装教程</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>新手玩家一般推荐尝试 ArchLinux，如希望尝试 Arch 系发行版可尝试 manjaro</strong></p>
+<p><strong>双系统安装</strong></p>
+<p>大多数情况下我们不得不使用Windows，那么我们可以考虑在自己的设备上安装 Windows + Linux 双系统。</p>
+<p><em>建议在设备拥有两块可用硬盘的情况下尝试，将两个系统安装在不同的硬盘上</em></p>
+<p><em><strong>为防止出现错误，请备份数据</strong></em></p>
+<p><a href="https://blog.csdn.net/NeoZng/article/details/122779035">Ubuntu 双系统安装</a></p>
+<p>双系统安装完成后可能出现系统时间不同步的问题，可参考如下链接解决：</p>
+<p><a href="https://www.cnblogs.com/xiaotong-sun/p/16138941.html">解决双系统时间不同步</a></p>
+<p><strong>虚拟机/ wsl</strong></p>
+<p>如担心直接安装物理机或双系统可能带来的问题，或者担心易用性，可以尝试使用虚拟机或 wsl（Windows 的 Linux 子系统）。</p>
+<p>关于 wsl 的安装，请参考如下链接：</p>
+<p><a href="https://learn.microsoft.com/zh-cn/windows/wsl/">适用于 Linux 的 Windows 子系统文档</a></p>
+<h3 id="linux-基本命令"><a class="header" href="#linux-基本命令">Linux 基本命令</a></h3>
+<h4 id="文件和目录操作命令"><a class="header" href="#文件和目录操作命令">文件和目录操作命令</a></h4>
+<ul>
+<li><strong><code>ls</code></strong>：列出目录内容。
+<ul>
+<li>示例：<code>ls -l</code> 以长格式列出当前目录下的所有文件和目录。</li>
+<li>示例：<code>ls -a</code> 显示所有文件，包括隐藏文件。</li>
+<li>示例：<code>ls /home/user</code> 列出指定目录 <code>/home/user</code> 的内容。</li>
+</ul>
+</li>
+<li><strong><code>cd</code></strong>：改变当前目录。
+<ul>
+<li>示例：<code>cd /home/user</code> 切换到 <code>/home/user</code> 目录。</li>
+<li>示例：<code>cd ..</code> 切换到上一级目录。</li>
+<li>示例：<code>cd</code> 切换到用户的主目录。</li>
+</ul>
+</li>
+<li><strong><code>pwd</code></strong>：显示当前工作目录的路径。
+<ul>
+<li>示例：<code>pwd</code> 显示当前所在的完整目录路径。</li>
+</ul>
+</li>
+<li><strong><code>mkdir</code></strong>：创建新目录。
+<ul>
+<li>示例：<code>mkdir new_directory</code> 在当前目录下创建名为 <code>new_directory</code> 的新目录。</li>
+<li>示例：<code>mkdir -p parent/child/grandchild</code> 创建多级目录，如果父目录不存在则一并创建。</li>
+</ul>
+</li>
+<li><strong><code>rm</code></strong>：删除文件或目录。
+<ul>
+<li>示例：<code>rm file.txt</code> 删除名为 <code>file.txt</code> 的文件。</li>
+<li>示例：<code>rm -r directory</code> 删除名为 <code>directory</code> 的目录及其内容。</li>
+<li>示例：<code>rm -f file.txt</code> 强制删除 <code>file.txt</code> 文件，不提示确认。</li>
+</ul>
+</li>
+<li><strong><code>cp</code></strong>：复制文件或目录。
+<ul>
+<li>示例：<code>cp source.txt destination.txt</code> 将 <code>source.txt</code> 复制为 <code>destination.txt</code>。</li>
+<li>示例：<code>cp -r source_directory destination_directory</code> 复制整个目录及其内容。</li>
+</ul>
+</li>
+<li><strong><code>mv</code></strong>：移动或重命名文件或目录。
+<ul>
+<li>示例：<code>mv old.txt new.txt</code> 将 <code>old.txt</code> 重命名为 <code>new.txt</code>。</li>
+<li>示例：<code>mv file.txt /home/user</code> 将 <code>file.txt</code> 移动到 <code>/home/user</code> 目录。</li>
+</ul>
+</li>
+</ul>
+<h4 id="文件查看和编辑命令"><a class="header" href="#文件查看和编辑命令">文件查看和编辑命令</a></h4>
+<ul>
+<li><strong><code>cat</code></strong>：连接文件并打印到标准输出。
+<ul>
+<li>示例：<code>cat file.txt</code> 显示 <code>file.txt</code> 的内容。</li>
+<li>示例：<code>cat file1.txt file2.txt &gt; combined.txt</code> 将 <code>file1.txt</code> 和 <code>file2.txt</code> 的内容合并到 <code>combined.txt</code>。</li>
+</ul>
+</li>
+<li><strong><code>more</code></strong> 或 <strong><code>less</code></strong>：分页查看文件内容。
+<ul>
+<li>示例：<code>more file.txt</code> 逐页显示 <code>file.txt</code> 的内容。</li>
+<li>示例：<code>less file.txt</code> 更高级的分页查看，支持向前和向后翻页。</li>
+</ul>
+</li>
+<li><strong><code>nano</code></strong> 或 <strong><code>vi</code></strong>：文本编辑器。
+<ul>
+<li>示例：<code>nano file.txt</code> 使用 nano 编辑器打开 <code>file.txt</code>。</li>
+<li>示例：<code>vi file.txt</code> 使用 vi 编辑器打开 <code>file.txt</code>。</li>
+</ul>
+</li>
+</ul>
+<h4 id="系统信息和进程管理命令"><a class="header" href="#系统信息和进程管理命令">系统信息和进程管理命令</a></h4>
+<ul>
+<li><strong><code>uname</code></strong>：显示系统信息。
+<ul>
+<li>示例：<code>uname -a</code> 显示所有系统信息，包括内核版本和系统架构。</li>
+</ul>
+</li>
+<li><strong><code>top</code></strong>：实时显示系统资源使用情况和运行中的进程。
+<ul>
+<li>示例：<code>top</code> 打开 top 命令，查看系统资源和进程信息。</li>
+</ul>
+</li>
+<li><strong><code>ps</code></strong>：显示当前运行的进程。
+<ul>
+<li>示例：<code>ps aux</code> 显示所有用户的所有进程。</li>
+</ul>
+</li>
+<li><strong><code>kill</code></strong>：终止进程。
+<ul>
+<li>示例：<code>kill PID</code> 终止指定 PID 的进程。</li>
+<li>示例：<code>kill -9 PID</code> 强制终止指定 PID 的进程。</li>
+</ul>
+</li>
+</ul>
+<h4 id="网络命令"><a class="header" href="#网络命令">网络命令</a></h4>
+<ul>
+<li><strong><code>ping</code></strong>：测试网络连接。
+<ul>
+<li>示例：<code>ping google.com</code> 测试与 <a href="http://google.com/">google.com</a> 的网络连接。</li>
+</ul>
+</li>
+<li><strong><code>ifconfig</code></strong> 或 <strong><code>ip</code></strong>：显示和配置网络接口。
+<ul>
+<li>示例：<code>ifconfig</code> 或 <code>ip addr</code> 显示所有网络接口的配置信息。</li>
+</ul>
+</li>
+<li><strong><code>netstat</code></strong>：显示网络连接、路由表和接口统计等。
+<ul>
+<li>示例：<code>netstat -an</code> 显示所有网络连接和端口状态。</li>
+</ul>
+</li>
+</ul>
+<p>通过这些命令，您可以有效地管理文件和目录，查看和编辑文件内容，监控系统资源和进程，以及进行基本的网络配置和故障排查。这些命令是 Linux 系统管理和开发工作的基础。</p>
 
                     </main>
 
