@@ -175,6 +175,7 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="前言"><a class="header" href="#前言">前言</a></h1>
+<p><strong>本文档尚在编写和调整中</strong></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="介绍"><a class="header" href="#介绍">介绍</a></h1>
 <p>傲来操作系统（EulixOS）是由中科院软件所 / 中科南京软件技术研究院团队基于 openEuler 打造的操作系统发行版，其开发目标是集成软件所的最新科研成果，面向开源爱好者、科研人员和学生，为在线服务、高性能计算、AI 计算等使用场景提供一款安全、易用的操作系统。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="环境配置"><a class="header" href="#环境配置">环境配置</a></h1>
@@ -1127,9 +1128,233 @@ endif
 <li><a href="ch4-04.html">导学阶段实验相关问题与解决方案</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="实验代码框架讲解"><a class="header" href="#实验代码框架讲解">实验代码框架讲解</a></h2>
+<h3 id="项目结构"><a class="header" href="#项目结构">项目结构</a></h3>
+<pre><code class="language-bash">.
+├── exercises //所有习题都在此文件夹下
+├── LICENSE
+├── Makefile 
+├── README.en.md
+├── README.md
+└── test //所有测例都在此文件夹下
+</code></pre>
+<ul>
+<li><strong>exercises</strong>：这个文件夹包含了所有的习题代码。每个习题可以作为一个子文件夹，其中包含习题的源代码、数据文件和任何相关的资源。</li>
+<li><strong>LICENSE</strong>：项目的许可证文件，定义了项目的使用、修改和分发的法律条款。</li>
+<li><strong>Makefile</strong>：一个自动化构建脚本，用于编译、测试和清理项目。通过运行 <code>make</code> 命令，可以执行 Makefile 中定义的任务。</li>
+<li><strong>test</strong>：这个文件夹包含了所有的测试用例。每个测试用例可以作为一个子文件夹或文件，用于验证习题代码的正确性。</li>
+</ul>
+<h3 id="makefile-内容"><a class="header" href="#makefile-内容">Makefile 内容</a></h3>
+<p>实验框架的 Makefile：</p>
+<pre><code class="language-Makefile">﻿# Makefile for C language exercise project
+
+# Define the directory where the exercise files are stored
+EXERCISE_DIR = ./exercises
+
+# Define the test directory
+TEST_DIR = ./test
+
+# Define the build directory
+BUILD_DIR = ./build
+
+# Ensure the test and build directories exist
+$(shell mkdir -p $(TEST_DIR) $(BUILD_DIR))
+
+# Define the list of exercises
+EXERCISES = $(wildcard $(EXERCISE_DIR)/*.c)
+
+# Define the list of executables
+EXECUTABLES = $(patsubst $(EXERCISE_DIR)/%.c, $(BUILD_DIR)/%, $(EXERCISES))
+
+# Define compiler and linker flags
+CC = gcc
+CFLAGS = -Wall -Wextra -std=c99
+LDFLAGS = -lm
+
+# Default target: build all executables
+all: $(EXECUTABLES) clean
+
+# Build rule for each executable
+$(BUILD_DIR)/%: $(EXERCISE_DIR)/%.c
+	$(CC) -o $@ $&lt; $(CFLAGS) $(LDFLAGS)
+
+# Clean rule to remove all executables and object files
+clean:
+	rm -f $(EXECUTABLES) $(BUILD_DIR)/*.o
+
+# Generate test cases rule
+generate-test-cases: $(EXECUTABLES)
+	@for exe in $(EXECUTABLES); do \
+    	./$$exe &gt; $(TEST_DIR)/$$(basename $$exe).out; \
+	done
+	@$(MAKE) clean
+
+# Test rule to compare output with expected results
+test-output: $(EXECUTABLES)
+	@for exe in $(EXECUTABLES); do \
+    	exercise_name=$$(basename $$exe); \
+    	expected=$$(cat $(TEST_DIR)/$${exercise_name}.out); \
+    	actual=$$($$exe); \
+    	if [ "$$expected" = "$$actual" ]; then \
+        	echo "Test for $${exercise_name} passed."; \
+    	else \
+        	echo "Test for $${exercise_name} failed."; \
+        	echo "Expected:"; echo "$$expected"; \
+        	echo "Actual:"; echo "$$actual"; \
+    	fi; \
+	done
+	@$(MAKE) clean
+
+# New target to save test results and count pass rate in JSON format
+save-test-results: $(EXECUTABLES)
+	@total=0; \
+	passed=0; \
+	&gt; $(BUILD_DIR)/test_results.json; \
+	for exe in $(EXECUTABLES); do \
+    	exercise_name=$$(basename $$exe); \
+    	expected=$$(cat $(TEST_DIR)/$${exercise_name}.out); \
+    	actual=$$($$exe); \
+    	total=$$((total+1)); \
+    	if [ "$$expected" = "$$actual" ]; then \
+        	passed=$$((passed+1)); \
+    	fi; \
+	done; \
+	echo "{\"channel\": \"gitee\",\"courseId\": 1558,\"ext\": \"aaa\",\"name\": \"\",\"score\": $$passed,\"totalScore\": 5}" &gt; $(BUILD_DIR)/test_results.json
+	@$(MAKE) clean
+
+.PHONY: all clean generate-test-cases test-output save-test-results
+
+</code></pre>
+<ul>
+<li><strong>目录定义</strong>：
+<ul>
+<li><code>EXERCISE_DIR</code>：存放练习文件的目录。</li>
+<li><code>TEST_DIR</code>：存放测试文件的目录。</li>
+<li><code>BUILD_DIR</code>：存放构建产物的目录。</li>
+</ul>
+</li>
+<li><strong>文件和目录操作</strong>：
+<ul>
+<li><code>mkdir -p $(TEST_DIR) $(BUILD_DIR)</code>：确保测试和构建目录存在。</li>
+</ul>
+</li>
+<li><strong>编译和链接</strong>：
+<ul>
+<li><code>CC = gcc</code>：定义编译器为gcc。</li>
+<li><code>CFLAGS = -Wall -Wextra -std=c99</code>：编译选项，包括警告和C99标准。</li>
+<li><code>LDFLAGS = -lm</code>：链接选项，链接数学库。</li>
+</ul>
+</li>
+<li><strong>构建规则</strong>：
+<ul>
+<li><code>$(BUILD_DIR)/%: $(EXERCISE_DIR)/%.c</code>：为每个练习文件生成对应的执行文件。</li>
+</ul>
+</li>
+<li><strong>清理规则</strong>：
+<ul>
+<li><code>clean</code>：删除所有执行文件和构建目录下的对象文件。</li>
+</ul>
+</li>
+<li><strong>测试规则</strong>：
+<ul>
+<li><code>generate-test-cases</code>：生成测试用例。</li>
+<li><code>test-output</code>：运行测试并比较输出结果。</li>
+<li><code>save-test-results</code>：保存测试结果和通过率到JSON文件。</li>
+</ul>
+</li>
+</ul>
+<p><strong>使用 makefile 进行实验</strong></p>
+<p>在实验过程中，Makefile提供了自动化构建和测试的便利。以下是如何使用这个Makefile进行实验的步骤：</p>
+<ol>
+<li>
+<p><strong>编译所有练习</strong>：</p>
+<pre><code class="language-bash">make
+</code></pre>
+<p>这个命令会编译所有练习文件，并在<code>BUILD_DIR</code>目录下生成对应的执行文件。</p>
+</li>
+<li>
+<p><strong>生成测试用例</strong>：</p>
+<pre><code class="language-bash">make generate-test-cases
+</code></pre>
+<p>这个命令会运行所有执行文件，并将输出保存为测试用例。</p>
+</li>
+<li>
+<p><strong>运行测试</strong>：</p>
+<pre><code class="language-bash">make test-output
+</code></pre>
+<p>这个命令会比较每个执行文件的输出与预期结果，并显示测试结果。</p>
+</li>
+<li>
+<p><strong>保存测试结果</strong>：</p>
+<pre><code class="language-bash">make save-test-results
+</code></pre>
+<p>这个命令会计算测试的通过率，并将结果保存到<code>test_results.json</code>文件中。</p>
+</li>
+<li>
+<p><strong>清理</strong>：</p>
+<pre><code class="language-bash">make clean
+</code></pre>
+<p>这个命令会删除所有构建产物和对象文件，保持环境整洁。</p>
+</li>
+</ol>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="本地测试流程"><a class="header" href="#本地测试流程">本地测试流程</a></h2>
+<p>在实验过程中，本地测试是验证代码正确性的关键步骤。以下是本地测试的具体流程：</p>
+<ul>
+<li>
+<p><strong>运行所有题目的测试</strong>：</p>
+<pre><code class="language-bash">make test-output
+</code></pre>
+<p>这个命令会执行所有题目的测试，并输出测试结果。确保你的代码在提交之前通过了所有本地测试。</p>
+</li>
+<li>
+<p><strong>测试并保存结果</strong>：</p>
+<pre><code class="language-bash">mkdir build
+make save-test-results
+</code></pre>
+<p>这个命令会创建一个名为 <code>build</code> 的目录，并在该目录下生成一个 <code>test_results.json</code> 文件，用于保存测试结果。这个文件对于记录和跟踪实验进度非常有用。</p>
+</li>
+</ul>
+<h3 id="测试结果文件格式"><a class="header" href="#测试结果文件格式">测试结果文件格式</a></h3>
+<p><code>test_results.json</code> 文件的格式如下：</p>
+<pre><code class="language-json">{
+  "channel": "gitee", // 提交渠道
+  "courseId": 1558, // 课程ID
+  "ext": "aaa",
+  "name": "xukunyuan-star", // 提交者信息
+  "score": 5, // 提交者当前分数
+  "totalScore": 5 // 当前实验总分
+}
+</code></pre>
+<p>这个文件包含了提交渠道、课程ID、扩展信息、提交者名称、当前分数以及实验总分等关键信息。确保每次测试后都更新这个文件，以便于跟踪实验的进度和成绩。</p>
+<p><strong>注意，在本地测试的过程中，请注意不要破坏测例</strong></p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="实验相关资料汇总"><a class="header" href="#实验相关资料汇总">实验相关资料汇总</a></h2>
+<p>导学阶段的实验相对简单，以下是一部分实验相关资料的汇总：</p>
+<p><strong>make 与 Makefile 教程</strong></p>
+<p><a href="https://www.ruanyifeng.com/blog/2015/02/make.html">make 命令教程-阮一峰</a></p>
+<p>阮一峰的这篇博客详细介绍了make命令及其配置文件Makefile的使用。make是一个构建自动化工具，它根据Makefile中的规则来编译和链接程序。这篇文章适合那些希望提高项目构建效率的开发者。</p>
+<p><a href="https://seisman.github.io/how-to-write-makefile/">跟我一起写 Makefile</a></p>
+<p>这本书籍风格的教程深入浅出地讲解了如何编写Makefile。它从基础规则到高级技巧，逐步引导读者掌握Makefile的编写，适合希望深入理解make工具的读者。</p>
+<p><strong>C语言教程</strong></p>
+<p><a href="https://www.runoob.com/cprogramming/c-tutorial.html">C语言教程-菜鸟教程</a></p>
+<p>菜鸟教程提供了全面的C语言学习资源，从基础语法到高级特性，适合初学者和希望复习C语言的开发者。这个教程的特点是实例丰富，易于理解。</p>
+<p><strong>Linux 教程</strong></p>
+<p><a href="https://www.runoob.com/linux/linux-tutorial.html">Linux教程-菜鸟教程</a></p>
+<p>菜鸟教程的Linux部分覆盖了从Linux基础命令到系统管理的各个方面。这个教程适合希望快速入门Linux操作系统的用户。</p>
+<p><a href="https://zq99299.github.io/linux-tutorial/">Linux系统教程（笔记）</a></p>
+<p>这是一个个人笔记式的Linux教程，内容详实，适合有一定基础并希望深入学习Linux系统的用户。</p>
+<p><a href="https://nju-projectn.github.io/ics-pa-gitbook/ics2021/linux.html">PA实验-Linux入门教程</a></p>
+<p>鼎鼎大名的 PA 实验的开头章节，很适合用于 Linux 使用的上手。</p>
+<p><strong>算法与数据结构</strong></p>
+<p><a href="https://www.runoob.com/data-structures/data-structures-tutorial.html">数据结构与算法-菜鸟教程</a></p>
+<p>菜鸟教程的数据结构与算法部分提供了基础的数据结构和算法知识，适合初学者学习。</p>
+<p><a href="https://github.com/dunwu/algorithm-tutorial">ALGORITHM-TUTORIAL</a></p>
+<p>这是一个GitHub上的算法教程项目，包含了多种算法的实现和解释，适合希望提高算法能力的开发者。</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="导学阶段实验相关问题与解决方案"><a class="header" href="#导学阶段实验相关问题与解决方案">导学阶段实验相关问题与解决方案</a></h2>
+<h3 id="1我按照题目的要求完成了代码但是并没有通过测试"><a class="header" href="#1我按照题目的要求完成了代码但是并没有通过测试">1.我按照题目的要求完成了代码，但是并没有通过测试</a></h3>
+<p>请注意题目描述中对于输出格式的规定，按照要求的格式进行输出。</p>
+<h3 id="2我不小心破坏了测例怎么办"><a class="header" href="#2我不小心破坏了测例怎么办">2.我不小心破坏了测例怎么办</a></h3>
+<p>可以重新从模板仓库 fork，或者直接获取测例。</p>
+<h3 id="3是否可以不按照习题文件的顺序完成习题"><a class="header" href="#3是否可以不按照习题文件的顺序完成习题">3.是否可以不按照习题文件的顺序完成习题</a></h3>
+<p>可以。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="提交成绩"><a class="header" href="#提交成绩">提交成绩</a></h1>
 <p>经过上一章的学习与讲解，相信大家都已经顺利完成了，本章将会引导大家提交实验的成绩。</p>
 <ul>
