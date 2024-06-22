@@ -1356,7 +1356,7 @@ make save-test-results
 <h3 id="3是否可以不按照习题文件的顺序完成习题"><a class="header" href="#3是否可以不按照习题文件的顺序完成习题">3.是否可以不按照习题文件的顺序完成习题</a></h3>
 <p>可以。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="提交成绩"><a class="header" href="#提交成绩">提交成绩</a></h1>
-<p>经过上一章的学习与讲解，相信大家都已经顺利完成了，本章将会引导大家提交实验的成绩。</p>
+<p>经过上一章的学习与讲解，相信大家都已经顺利完成了实验，本章将会引导大家提交实验的成绩。</p>
 <ul>
 <li><a href="ch5-01.html">流水线测试过程</a></li>
 <li><a href="ch5-02.html">排行榜成绩查看与绑定</a></li>
@@ -1364,6 +1364,65 @@ make save-test-results
 <li><a href="ch5-04.html">提交过程相关问题与解决方案</a></li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="流水线测试过程"><a class="header" href="#流水线测试过程">流水线测试过程</a></h2>
+<p><strong>流水线配置</strong></p>
+<pre><code class="language-yaml">version: '1.0'
+name: test
+displayName: test
+triggers:
+  trigger: auto
+  push:
+    branches:
+      prefix:
+        - ''
+variables:
+  POST_API: ***
+stages:
+  - name: build-test
+    displayName: build-test
+    strategy: naturally
+    trigger: auto
+    executor: []
+    steps:
+      - step: build@gcc
+        name: build_gcc
+        displayName: build
+        gccVersion: '9.4'
+        commands:
+          - apt-get update
+          - ''
+          - apt-get install -y curl
+          - ''
+          - mkdir build
+          - ''
+          - make test-output
+          - ''
+          - make save-test-results
+          - ''
+          - gitee_id="$GITEE_PIPELINE_TRIGGER_USER"
+          - ''
+          - json_file="build/test_results.json"
+          - ''
+          - existing_json=$(cat "$json_file")
+          - ''
+          - updated_json=$(echo "$existing_json" | jq --arg gitee_id "$gitee_id" '.name = $gitee_id')
+          - ''
+          - echo "$updated_json" &gt; "$json_file"
+          - ''
+          - cat build/test_results.json
+          - ''
+          - 'curl -X POST "$POST_API" -H "accept: application/json;charset=utf-8" -H "Content-Type: application/json" -d "$(cat build/test_results.json)" -v'
+          - ''
+          - ''
+        artifacts:
+          - name: test_results
+            path:
+              - ./build/test_results.json
+        caches: []
+        notify: []
+        strategy:
+          retry: '0'
+
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="排行榜成绩查看与绑定"><a class="header" href="#排行榜成绩查看与绑定">排行榜成绩查看与绑定</a></h2>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="如何晋级"><a class="header" href="#如何晋级">如何晋级</a></h2>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="提交过程相关问题与解决方案"><a class="header" href="#提交过程相关问题与解决方案">提交过程相关问题与解决方案</a></h2>
