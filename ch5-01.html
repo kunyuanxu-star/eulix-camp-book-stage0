@@ -233,6 +233,21 @@ stages:
           retry: '0'
 
 </code></pre>
+<p>流水线的配置文件定义了一个名为“test”的流水线，它具有自动触发的特性。该流水线包含一个阶段（stage），名为“build-test”，其目的是构建和测试代码。</p>
+<p>其包含以下几个步骤：</p>
+<p><strong>环境准备</strong></p>
+<p>在“build-test”阶段中，首先执行的是环境准备步骤。这包括更新包列表（apt-get update）和安装必要的软件（apt-get install -y curl）。这些步骤确保了构建和测试环境的一致性和可用性。</p>
+<p><strong>构建与测试</strong></p>
+<p>接下来，流水线创建一个名为“build”的目录，并在其中执行构建命令（make test-output）和保存测试结果的命令（make save-test-results）。这些命令是构建和测试过程的核心。</p>
+<p><strong>结果处理</strong></p>
+<p>测试完成后，流水线会读取build/test_results.json文件中的测试结果，并使用jq工具更新其中的giteeName字段。这一步骤确保了测试结果中包含了执行流水线的用户的Gitee ID。</p>
+<p><strong>结果提交</strong></p>
+<p>更新后的测试结果通过curl命令被发送到指定的API（$POST_API）。这一步骤实现了测试结果的自动化提交，使得测试结果可以被远程服务器接收和处理。</p>
+<p><strong>结果归档</strong></p>
+<p>最后，流水线将build/test_results.json文件作为构建产物（artifact）归档，以便后续的分析和审查。</p>
+<h3 id="如何进行流水线测试"><a class="header" href="#如何进行流水线测试">如何进行流水线测试</a></h3>
+<p>完成实验后，请上传至远程仓库运行 CI。详细执行情况与输出可在流水线页面查看。</p>
+<p><img src="resource/ch5-02-01.png" alt="" /></p>
 
                     </main>
 

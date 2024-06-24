@@ -1423,9 +1423,37 @@ stages:
           retry: '0'
 
 </code></pre>
+<p>流水线的配置文件定义了一个名为“test”的流水线，它具有自动触发的特性。该流水线包含一个阶段（stage），名为“build-test”，其目的是构建和测试代码。</p>
+<p>其包含以下几个步骤：</p>
+<p><strong>环境准备</strong></p>
+<p>在“build-test”阶段中，首先执行的是环境准备步骤。这包括更新包列表（apt-get update）和安装必要的软件（apt-get install -y curl）。这些步骤确保了构建和测试环境的一致性和可用性。</p>
+<p><strong>构建与测试</strong></p>
+<p>接下来，流水线创建一个名为“build”的目录，并在其中执行构建命令（make test-output）和保存测试结果的命令（make save-test-results）。这些命令是构建和测试过程的核心。</p>
+<p><strong>结果处理</strong></p>
+<p>测试完成后，流水线会读取build/test_results.json文件中的测试结果，并使用jq工具更新其中的giteeName字段。这一步骤确保了测试结果中包含了执行流水线的用户的Gitee ID。</p>
+<p><strong>结果提交</strong></p>
+<p>更新后的测试结果通过curl命令被发送到指定的API（$POST_API）。这一步骤实现了测试结果的自动化提交，使得测试结果可以被远程服务器接收和处理。</p>
+<p><strong>结果归档</strong></p>
+<p>最后，流水线将build/test_results.json文件作为构建产物（artifact）归档，以便后续的分析和审查。</p>
+<h3 id="如何进行流水线测试"><a class="header" href="#如何进行流水线测试">如何进行流水线测试</a></h3>
+<p>完成实验后，请上传至远程仓库运行 CI。详细执行情况与输出可在流水线页面查看。</p>
+<p><img src="resource/ch5-02-01.png" alt="" /></p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="排行榜成绩查看与绑定"><a class="header" href="#排行榜成绩查看与绑定">排行榜成绩查看与绑定</a></h2>
+<p><strong>导学阶段排行榜地址</strong></p>
+<p><a href="https://opencamp.cn/EulixOS/camp/202401/stage/0?tab=rank">导学阶段晋级榜单</a></p>
+<p>在通过在线的 CI 评测后，你的成绩会被发送到训练营的排行榜上。</p>
+<p><img src="resource/ch1/5.png" alt="" /></p>
+<p>如图所示，排行榜上显示了你的排名，姓名（昵称），分数，最后提交时间等信息，排行榜上的成绩作为晋级的一大依据。</p>
+<p><strong>请注意：为了确保成绩被正确绑定，请在训练营网站上正确填写 GitHubName/GiteeName</strong></p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="如何晋级"><a class="header" href="#如何晋级">如何晋级</a></h2>
+<p>导学阶段并无强制的晋级要求，但是参照此后正式阶段的晋级条件，我们建议各位同学在进行正式阶段的学习前完成基础阶段的实验与课程，为正式阶段的实验打好基础。</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="提交过程相关问题与解决方案"><a class="header" href="#提交过程相关问题与解决方案">提交过程相关问题与解决方案</a></h2>
+<h3 id="1晋级榜单上的成绩没有准确链接到用户信息"><a class="header" href="#1晋级榜单上的成绩没有准确链接到用户信息">1.晋级榜单上的成绩没有准确链接到用户信息</a></h3>
+<p>请确保在个人信息页面正确填写了 GitHubName/GiteeName，确认正确填写后再做一次提交便可正确链接到用户信息。</p>
+<h3 id="2本地代码无法提交到远程仓库"><a class="header" href="#2本地代码无法提交到远程仓库">2.本地代码无法提交到远程仓库</a></h3>
+<p>请检查自己的网络是够正常，建议使用 ssh 协议进行提交，如依然无法正确提交，请检查是否存在内容冲突。</p>
+<h3 id="3使用-wsl-进行实验但因-wsl-网络问题无法提交"><a class="header" href="#3使用-wsl-进行实验但因-wsl-网络问题无法提交">3.使用 wsl 进行实验，但因 wsl 网络问题无法提交</a></h3>
+<p>尝试将本地仓库复制到 Windows 文件系统下进行提交。</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="晋级之后"><a class="header" href="#晋级之后">晋级之后</a></h2>
 <p>经过之前的学习，相信大家已经完成了导学阶段的学习与晋级要求，本章将引导大家在下一阶段正式开始之前的余下时间可以拓展的内容，以及对后续学习的引导。</p>
 <ul>
