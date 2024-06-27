@@ -178,6 +178,78 @@
 <p><strong>本文档尚在编写和调整中</strong></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="介绍"><a class="header" href="#介绍">介绍</a></h1>
 <p>傲来操作系统（EulixOS）是由中科院软件所 / 中科南京软件技术研究院团队基于 openEuler 打造的操作系统发行版，其开发目标是集成软件所的最新科研成果，面向开源爱好者、科研人员和学生，为在线服务、高性能计算、AI 计算等使用场景提供一款安全、易用的操作系统。</p>
+<p>本书用于为参与傲来操作系统训练营的学员提供导学阶段学习引导。</p>
+<p>本书基于 mdbook 编写，已部署至 https://kunyuanxu-star.github.io/eulix-camp-book-stage0/</p>
+<h2 id="文档本地使用方法"><a class="header" href="#文档本地使用方法">文档本地使用方法</a></h2>
+<p>需要 Rust 环境。</p>
+<pre><code class="language-shell">git clone https://github.com/kunyuanxu-star/eulix-camp-book-stage0.git
+cd arceos-tutorial-book
+cargo install mdbook
+mdbook serve docs
+</code></pre>
+<h2 id="文档大纲"><a class="header" href="#文档大纲">文档大纲</a></h2>
+<ul>
+<li>前言</li>
+<li>介绍</li>
+<li>环境配置</li>
+<li>第一章：导学阶段基本信息
+<ul>
+<li>训练营教学系统使用引导</li>
+<li>导学阶段视频课程链接与学习引导</li>
+<li>导学课程学习资料汇总</li>
+<li>开营仪式教学安排与资料汇总</li>
+<li>教学系统常见问题与解决方案</li>
+</ul>
+</li>
+<li>第二章：基本 Git 使用与 Gitee 流水线入门
+<ul>
+<li>常用 Git 指令</li>
+<li>Gitee 使用入门</li>
+<li>Gitee Go 的配置与使用</li>
+<li>流水线常见问题与解决方案</li>
+</ul>
+</li>
+<li>第三章：前置知识
+<ul>
+<li>Linux 使用入门与配置</li>
+<li>C 语言基本语法</li>
+<li>make 基本使用与 Makefile</li>
+<li>如何在非 Linux 环境中完成实验</li>
+</ul>
+</li>
+<li>第四章：开始实验
+<ul>
+<li>实验代码框架讲解</li>
+<li>本地测试流程</li>
+<li>实验相关资料汇总</li>
+<li>第一题：输出 Hello World!</li>
+<li>第二题：基本循环</li>
+<li>第三题：打印九九乘法表</li>
+<li>第四题：求素数</li>
+<li>第五题：约瑟夫环</li>
+<li>导学阶段实验相关问题与解决方案</li>
+</ul>
+</li>
+<li>第五章：提交成绩
+<ul>
+<li>流水线测试过程</li>
+<li>排行榜成绩查看与绑定</li>
+<li>如何晋级</li>
+<li>提交过程相关问题与解决方案</li>
+</ul>
+</li>
+<li>第六章：晋级之后
+<ul>
+<li>拓展内容汇总</li>
+<li>后续学习指引</li>
+<li>部分优质实践资源</li>
+</ul>
+</li>
+<li>其余常见问题与解决方案</li>
+<li>附录A：使用 Gitee 流水线信息进行调试</li>
+<li>附录B：实验所用到的其余专业前置知识</li>
+<li>附录C：部分工具的使用入门</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="环境配置"><a class="header" href="#环境配置">环境配置</a></h1>
 <p>为了顺利进行导学阶段的实验，为之后正式学习的实验做好准备，需要先进行一些简单的环境配置。</p>
 <p>我们推荐在 Linux 环境下完成实验，如果不在 Linux 环境下完成实验可能会遇到部分问题，具体可参考<a href="ch3-04.html">如何在非 Linux 环境中完成实验</a>。</p>
@@ -1873,9 +1945,251 @@ stages:
 <li><a href="ch6-02.html">后续学习指引</a></li>
 <li><a href="ch6-03.html">部分优质实践资源</a></li>
 </ul>
-<div style="break-before: page; page-break-before: always;"></div><h2 id="拓展内容汇总"><a class="header" href="#拓展内容汇总">拓展内容汇总</a></h2>
+<div style="break-before: page; page-break-before: always;"></div><h2 id="拓展内容与学习资源汇总"><a class="header" href="#拓展内容与学习资源汇总">拓展内容与学习资源汇总</a></h2>
+<p><em>本节内容持续更新</em></p>
+<h3 id="导学课程相关学习资料"><a class="header" href="#导学课程相关学习资料">导学课程相关学习资料</a></h3>
+<p><strong>导学阶段课程课件</strong></p>
+<p><a href="https://gitee.com/unicornx/riscv-operating-system-mooc/tree/main/slides">riscv-operating-system-mooc/slides</a></p>
+<p>此链接包含导学阶段课程<a href="https://www.bilibili.com/video/BV1Q5411w7z5">《循序渐进，学习开发一个 RISC-V 上的操作系统 </a> 的全部课件，可作为视频课程的辅助之用。</p>
+<p><strong>课程配套实验</strong></p>
+<p><a href="https://gitee.com/unicornx/riscv-operating-system-mooc">riscv-operating-system-mooc</a></p>
+<p>此链接为导学阶段课程的配套实验代码仓库，实验难度不大，适合初学者了解系统编程与操作系统理论知识，推荐尝试。</p>
+<p><strong>一个可运行课程实验的 RISCV CPU</strong></p>
+<p><a href="https://gitee.com/lizhanpeng2022/cpu_prj">riscv-v-cpu</a></p>
+<p>此仓库为一位该课程<a href="https://www.bilibili.com/video/BV1Q5411w7z5">《循序渐进，学习开发一个 RISC-V 上的操作系统 》</a> 的热心学员设计的 RISCV CPU，可在其上运行课程配套的实验代码。</p>
+<p><strong>课程代码到物理机的移植记录</strong></p>
+<p><a href="https://gitee.com/unicornx/riscv-operating-system-mooc/issues/I64EEQ">riscv-operating-system-mooc/issues/I64EEQ</a></p>
+<p>这里记录了该课程配套代码向物理机的移植记录，鼓励大家在完成本课程后积极参与这一活动，提高自己的系统编程与工程能力。</p>
+<p><strong>一份来自b站本课程学员的学习笔记</strong></p>
+<p><a href="https://blog.csdn.net/bebebug/article/details/128039038?spm=1001.2014.3001.5501">RISC-V入门（基础概念+汇编部分） 基于 汪辰老师的视频笔记</a></p>
+<h3 id="其余学习资料-1"><a class="header" href="#其余学习资料-1">其余学习资料</a></h3>
+<p><strong>uCore 实验指导书</strong></p>
+<p><a href="https://nankai.gitbook.io/ucore-os-on-risc-v64">uCore OS(on RISC-V64)实验指导书</a></p>
+<p>uCore 实验同样为实现一个 RISCV 架构操作系统的教学用操作系统，其难度较于导学阶段课程颇高，但是内容完善，体系严整，可作为完成课程后的提高之用。</p>
+<p><strong>rCore 实验指导书</strong></p>
+<p><a href="https://rcore-os.cn/rCore-Tutorial-Book-v3/">rCore-Tutorial-Book-v3</a></p>
+<p>rCore 实验与 uCore 实验内容基本相同，但是 rCore 代码框架使用 Rust 语言编写，欲进行实验需要先行学习 Rust，但通过本实验可以学习 Rust base OS 这一新兴技术，建议学有余力的学员进行尝试。</p>
+<p><strong>清华大学操作系统课程资料</strong></p>
+<p><a href="https://lzzs.fun/Tsinghua-OS-mdbook/">Tsinghua OS Slide Mdbook </a></p>
+<p>此链接整合了清华大学计算机系2024春季学习操作系统课程课堂幻灯片的主要内容，对幻灯片中的一些概念进行了简单补充。</p>
+<p><strong>南京大学计算机系统基础实验（PA）</strong></p>
+<p><a href="https://ysyx.oscc.cc/docs/ics-pa/">南京大学 计算机科学与技术系 计算机系统基础课程实验 2024</a></p>
+<p><strong>南京大学操作系统课程</strong></p>
+<p><a href="https://jyywiki.cn/OS/2023/index.html">操作系统：设计与实现 (2023 春季学期)</a></p>
+<p><strong>静态程序分析</strong></p>
+<p><a href="https://ranger-nju.gitbook.io/static-program-analysis-book">Static Program Analysis Book</a></p>
+<p><strong>有趣的 Git 学习平台</strong></p>
+<p><a href="https://learngitbranching.js.org/?locale=zh_CN">Learn Git branch</a></p>
+<p><strong>make 与 Makefile 教程</strong></p>
+<p><a href="https://www.ruanyifeng.com/blog/2015/02/make.html">make 命令教程-阮一峰</a></p>
+<p>阮一峰的这篇博客详细介绍了make命令及其配置文件Makefile的使用。make是一个构建自动化工具，它根据Makefile中的规则来编译和链接程序。这篇文章适合那些希望提高项目构建效率的开发者。</p>
+<p><a href="https://seisman.github.io/how-to-write-makefile/">跟我一起写 Makefile</a></p>
+<p>这本书籍风格的教程深入浅出地讲解了如何编写Makefile。它从基础规则到高级技巧，逐步引导读者掌握Makefile的编写，适合希望深入理解make工具的读者。</p>
+<p><strong>C语言教程</strong></p>
+<p><a href="https://www.runoob.com/cprogramming/c-tutorial.html">C语言教程-菜鸟教程</a></p>
+<p>菜鸟教程提供了全面的C语言学习资源，从基础语法到高级特性，适合初学者和希望复习C语言的开发者。这个教程的特点是实例丰富，易于理解。</p>
+<p><a href="https://wizardforcel.gitbooks.io/lcthw/content/">笨办法学C 中文版</a></p>
+<p><strong>Linux 教程</strong></p>
+<p><a href="https://www.runoob.com/linux/linux-tutorial.html">Linux教程-菜鸟教程</a></p>
+<p>菜鸟教程的Linux部分覆盖了从Linux基础命令到系统管理的各个方面。这个教程适合希望快速入门Linux操作系统的用户。</p>
+<p><a href="https://zq99299.github.io/linux-tutorial/">Linux系统教程（笔记）</a></p>
+<p>这是一个个人笔记式的Linux教程，内容详实，适合有一定基础并希望深入学习Linux系统的用户。</p>
+<p><a href="https://nju-projectn.github.io/ics-pa-gitbook/ics2021/linux.html">PA实验-Linux入门教程</a></p>
+<p>鼎鼎大名的 PA 实验的开头章节，很适合用于 Linux 使用的上手。</p>
+<p><a href="https://missing.csail.mit.edu/">The Missing Semester of Your CS Education</a></p>
+<p><strong>算法与数据结构</strong></p>
+<p><a href="https://www.runoob.com/data-structures/data-structures-tutorial.html">数据结构与算法-菜鸟教程</a></p>
+<p>菜鸟教程的数据结构与算法部分提供了基础的数据结构和算法知识，适合初学者学习。</p>
+<p><a href="https://github.com/dunwu/algorithm-tutorial">ALGORITHM-TUTORIAL</a></p>
+<p>这是一个GitHub上的算法教程项目，包含了多种算法的实现和解释，适合希望提高算法能力的开发者。</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="后续学习指引"><a class="header" href="#后续学习指引">后续学习指引</a></h2>
+<h3 id="正式实验题目列表"><a class="header" href="#正式实验题目列表">正式实验题目列表</a></h3>
+<p><strong>基础阶段</strong></p>
+<p><strong><a href="https://gitee.com/LearningEulixOS/2024-exercises-stage-1">2024-exercises-stage-1</a></strong></p>
+<div class="table-wrapper"><table><thead><tr><th>编号</th><th>位置</th><th>简介</th><th>考察点</th><th>难度</th></tr></thead><tbody>
+<tr><td>01</td><td><code>src/exercise-01</code></td><td>编写第一个 Makefile</td><td>程序构建</td><td>入门</td></tr>
+<tr><td>02</td><td><code>src/exercise-02</code></td><td>编写第一个测试</td><td>程序构建</td><td>入门</td></tr>
+<tr><td>03</td><td><code>src/exercise-03</code></td><td>使用 Makefile 静态链接程序</td><td>程序构建</td><td>入门</td></tr>
+<tr><td>04</td><td><code>src/exercise-04</code></td><td>使用 Makefile 构建第一个静态链接库</td><td>程序构建</td><td>入门</td></tr>
+<tr><td>05</td><td><code>src/exercise-05</code></td><td>使用 Makefile 构建第一个动态链接库</td><td>程序构建</td><td>入门</td></tr>
+<tr><td>11</td><td><code>src/exercise-11</code></td><td>编写一个简单的 ld 文件并指定内存区域</td><td>程序构建</td><td>基础</td></tr>
+<tr><td>12</td><td><code>src/exercise-12</code></td><td>编写一个简单的 ld 文件并指定 text 起始地址</td><td>程序构建</td><td>基础</td></tr>
+<tr><td>13</td><td><code>src/exercise-13</code></td><td>编写一个简单的 ld 文件并指定自定义 symbol</td><td>程序构建</td><td>基础</td></tr>
+<tr><td>14</td><td><code>src/exercise-14</code></td><td>编写一个简单的 ld 文件并指定自定义 section</td><td>程序构建</td><td>基础</td></tr>
+<tr><td>20</td><td><code>src/exercise-20</code></td><td>合并两个任务队列</td><td>数据结构</td><td>基础</td></tr>
+<tr><td>21</td><td><code>src/exercise-21</code></td><td>按组反转一个任务队列</td><td>数据结构</td><td>基础</td></tr>
+<tr><td>30</td><td><code>src/exercise-30</code></td><td>编写一个内核模块打印 hello world</td><td>内核模块</td><td>入门</td></tr>
+<tr><td>31</td><td><code>src/exercise-31</code></td><td>编写一个内核模块实现阶乘计算</td><td>内核模块</td><td>基础</td></tr>
+<tr><td>32</td><td><code>src/exercise-32</code></td><td>编写一个内核模块实现字符串反转</td><td>内核模块</td><td>基础</td></tr>
+<tr><td>33</td><td><code>src/exercise-33</code></td><td>编写一个内核模块实现平均数计算</td><td>内核模块</td><td>基础</td></tr>
+<tr><td>34</td><td><code>src/exercise-34</code></td><td>编写一个内核模块实现线性查找</td><td>内核模块</td><td>基础</td></tr>
+<tr><td>35</td><td><code>src/exercise-35</code></td><td>编写一个内核模块延时打印字符串</td><td>内核模块</td><td>入门</td></tr>
+<tr><td>40</td><td><code>src/exercise-40</code></td><td>使用 RISC-V 内联汇编实现条件返回</td><td>RISC-V 基础指令</td><td>基础</td></tr>
+<tr><td>41</td><td><code>src/exercise-41</code></td><td>使用 RISC-V 内联汇编实现最大公因数求解</td><td>RISC-V 基础指令</td><td>基础</td></tr>
+<tr><td>42</td><td><code>src/exercise-42</code></td><td>使用 RISC-V 内联汇编实现数组元素查找</td><td>RISC-V 基础指令</td><td>中等</td></tr>
+</tbody></table>
+</div>
+<p><strong>进阶阶段</strong></p>
+<p><strong><a href="https://gitee.com/LearningEulixOS/2024-exercises-stage-2">2024-exercises-stage-2</a></strong></p>
+<div class="table-wrapper"><table><thead><tr><th>编号</th><th>位置</th><th>简介</th><th>考察点</th><th>难度</th></tr></thead><tbody>
+<tr><td>22</td><td><code>src/exercise-22</code></td><td>矩阵相乘</td><td>矩阵</td><td>基础</td></tr>
+<tr><td>23</td><td><code>src/exercise-23</code></td><td>2D 卷积操作</td><td>矩阵</td><td>基础</td></tr>
+<tr><td>24</td><td><code>src/exercise-24</code></td><td>矩阵的原地转置</td><td>矩阵</td><td>基础</td></tr>
+<tr><td>25</td><td><code>src/exercise-25</code></td><td>包含 0 的行列进行矩阵置零</td><td>矩阵</td><td>基础</td></tr>
+<tr><td>26</td><td><code>src/exercise-26</code></td><td>查找矩阵中第 K 个最小的元素</td><td>矩阵</td><td>基础</td></tr>
+<tr><td>36</td><td><code>src/exercise-36</code></td><td>编写一个内核模块求最大值</td><td>内核模块</td><td>基础</td></tr>
+<tr><td>37</td><td><code>src/exercise-37</code></td><td>编写一个内核模块启动一个定时器</td><td>内核模块</td><td>基础</td></tr>
+<tr><td>38</td><td><code>src/exercise-38</code></td><td>编写一个内核模块创建一个虚拟字符设备</td><td>内核模块</td><td>中等</td></tr>
+<tr><td>39</td><td><code>src/exercise-39</code></td><td>编写一个内核模块实现一个简单的文件操作函数</td><td>内核模块</td><td>中等</td></tr>
+<tr><td>43</td><td><code>src/exercise-43</code></td><td>使用内联 RISCV 汇编实现计算斐波那契数列的第 n 个数</td><td>RISC-V 基础指令RISC-V 基础指令</td><td>中等</td></tr>
+<tr><td>44</td><td><code>src/exercise-44</code></td><td>使用内联 RISCV 汇编实现整数数组求和</td><td>RISC-V 基础指令</td><td>中等</td></tr>
+<tr><td>45</td><td><code>src/exercise-45</code></td><td>使用内联 RISCV 汇编实现查找整数数组最大值</td><td>RISC-V 基础指令</td><td>中等</td></tr>
+<tr><td>46</td><td><code>src/exercise-46</code></td><td>使用内联 RISCV 汇编实现判断给定数组是否有序</td><td>RISC-V 基础指令</td><td>中等</td></tr>
+<tr><td>47</td><td><code>src/exercise-47</code></td><td>使用内联 RISCV 汇编实现给定数组目标元素个数</td><td>RISC-V 基础指令</td><td>中等</td></tr>
+<tr><td>50</td><td><code>src/exercise-50</code></td><td>模拟 FIFO 页面置换算法</td><td>操作系统</td><td>中等</td></tr>
+<tr><td>51</td><td><code>src/exercise-51</code></td><td>模拟 LRU 页面置换算法</td><td>操作系统</td><td>中等</td></tr>
+<tr><td>52</td><td><code>src/exercise-52</code></td><td>获取容器主机名</td><td>操作系统</td><td>基础</td></tr>
+<tr><td>53</td><td><code>src/exercise-53</code></td><td>简单虚拟地址到物理地址的转换</td><td>操作系统</td><td>中等</td></tr>
+<tr><td>54</td><td><code>src/exercise-54</code></td><td>模拟时间片轮转调度算法</td><td>操作系统</td><td>中等</td></tr>
+<tr><td>55</td><td><code>src/exercise-55</code></td><td>模拟虚拟内存限制</td><td>操作系统</td><td>中等</td></tr>
+</tbody></table>
+</div>
+<h3 id="学习指引"><a class="header" href="#学习指引">学习指引</a></h3>
+<h4 id="基础阶段"><a class="header" href="#基础阶段">基础阶段</a></h4>
+<p><strong><a href="https://gitee.com/LearningEulixOS/2024-exercises-stage-1">2024-exercises-stage-1</a></strong></p>
+<ol>
+<li><strong>Makefile 基础</strong>
+<ul>
+<li><strong>实验编号</strong>：01, 02, 03, 04, 05</li>
+<li><strong>学习目标</strong>：掌握 Makefile 的基本使用，包括编写简单的 Makefile、静态和动态链接库的构建。</li>
+<li>学习步骤：
+<ul>
+<li>阅读相关文档，了解 Makefile 的基本语法和结构。</li>
+<li>逐步完成每个实验，理解每个命令的作用。</li>
+<li>尝试修改 Makefile，观察构建结果的变化。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>链接器脚本编写</strong>
+<ul>
+<li><strong>实验编号</strong>：11, 12, 13, 14</li>
+<li><strong>学习目标</strong>：学习如何编写链接器脚本，指定内存区域、text 起始地址、自定义符号和节。</li>
+<li>学习步骤：
+<ul>
+<li>理解链接器脚本的基本概念和作用。</li>
+<li>完成实验，注意观察链接结果与脚本的关系。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>数据结构应用</strong>
+<ul>
+<li><strong>实验编号</strong>：20, 21</li>
+<li><strong>学习目标</strong>：掌握基本的数据结构操作，如队列的合并和反转。</li>
+<li>学习步骤：
+<ul>
+<li>复习队列的基本操作。</li>
+<li>实现代码，测试不同情况下的队列操作。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>内核模块开发</strong>
+<ul>
+<li><strong>实验编号</strong>：30, 31, 32, 33, 34, 35</li>
+<li><strong>学习目标</strong>：学习内核模块的基本开发流程，包括打印信息、实现简单算法等。</li>
+<li>学习步骤：
+<ul>
+<li>了解内核模块的基本概念和开发环境配置。</li>
+<li>逐步完成每个实验，理解内核模块与用户态程序的区别。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>RISC-V 内联汇编</strong>
+<ul>
+<li><strong>实验编号</strong>：40, 41, 42</li>
+<li><strong>学习目标</strong>：学习 RISC-V 内联汇编的基本使用，实现简单的算法。</li>
+<li>学习步骤：
+<ul>
+<li>学习 RISC-V 指令集基础。</li>
+<li>编写汇编代码，理解汇编与 C 语言的交互。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="进阶阶段"><a class="header" href="#进阶阶段">进阶阶段</a></h4>
+<p><strong><a href="https://gitee.com/LearningEulixOS/2024-exercises-stage-2">2024-exercises-stage-2</a></strong></p>
+<ol>
+<li><strong>矩阵操作</strong>
+<ul>
+<li><strong>实验编号</strong>：22, 23, 24, 25, 26</li>
+<li><strong>学习目标</strong>：深入理解矩阵操作，包括矩阵乘法、卷积、转置和元素查找。</li>
+<li>学习步骤：
+<ul>
+<li>学习矩阵的基本数学性质。</li>
+<li>实现代码，优化算法性能。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>内核模块高级应用</strong>
+<ul>
+<li><strong>实验编号</strong>：36, 37, 38, 39</li>
+<li><strong>学习目标</strong>：学习内核模块的高级应用，如定时器、虚拟设备和文件操作。</li>
+<li>学习步骤：
+<ul>
+<li>深入理解内核模块的工作原理。</li>
+<li>完成实验，注意安全性和稳定性。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>RISC-V 内联汇编高级应用</strong>
+<ul>
+<li><strong>实验编号</strong>：43, 44, 45, 46, 47</li>
+<li><strong>学习目标</strong>：掌握 RISC-V 内联汇编的高级应用，实现复杂算法。</li>
+<li>学习步骤：
+<ul>
+<li>深入学习 RISC-V 指令集。</li>
+<li>编写复杂的汇编代码，优化性能。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>操作系统原理</strong>
+<ul>
+<li><strong>实验编号</strong>：50, 51, 52, 53, 54, 55</li>
+<li><strong>学习目标</strong>：理解操作系统的基本原理，如页面置换算法、地址转换和调度算法。</li>
+<li>学习步骤：
+<ul>
+<li>学习操作系统的基本概念和原理。</li>
+<li>实现模拟算法，理解操作系统的工作机制。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="部分优质实践资源"><a class="header" href="#部分优质实践资源">部分优质实践资源</a></h2>
+<p><strong>清华大学开源操作系统训练营</strong></p>
+<p><a href="https://opencamp.cn/os2edu/camp/2024spring">2024春夏季开源操作系统训练营</a></p>
+<p><a href="https://github.com/LearningOS">训练营 GitHub 主页</a></p>
+<p>开源操作系统训练营是由清华大学的陈渝老师和向勇老师于2020年发起，旨在通过使用Rust语言编写操作系统的实践，培养全国高校学生的操作系统开发技能。训练营全程免费，指导学员参与开源项目实战，探索设计与构建新一代安全高性能操作系统。</p>
+<p><strong>自动驾驶OS开发训练营</strong></p>
+<p><a href="https://cicvedu.com/">自动驾驶OS开发训练营</a></p>
+<p>自动驾驶OS开发训练营是国家智联网联汽车创新中心（简称“创新中心”）和清华大学携手打造的前沿技术培训项目，课程内容汲取了清华大学Rust OS训练营的精髓，紧密结合自动驾驶操作系统领域的应用实践，致力于为在校学生及自动驾驶领域的从业人员提供专业、系统的自动驾驶OS开发技能与知识培训，成为符合行业需求的优秀工程师。</p>
+<p><strong>一生一芯</strong></p>
+<p><a href="https://ysyx.oscc.cc/">一生一芯官网</a></p>
+<p>针对我国计算机专业当前面临的较为突出的人才培养问题，以及计算机处理器芯片设计人才不足的问题，中国科学院大学（简称“国科大”）计算机科学与技术学院立足已有的理论课堂与实验教学，联合中国科学院计算技术研究所（简称“计算所”）的科研工程支撑团队，于2019年8月启动了“一生一芯”开源处理器芯片教学流片实践项目计划。</p>
+<p><a href="https://ysyx.oscc.cc/project/intro.html">一生一芯介绍</a></p>
+<p><strong>全国大学生计算机系统能力大赛</strong></p>
+<p><a href="https://compiler.educg.net/#/">全国大学生计算机系统能力大赛官网</a></p>
+<p>全国大学生计算机系统能力大赛是由系统能力培养研究专家组发起、由全国高校计算机教育研究会主办，面向高校大学生举办的全国性大赛，以学科竞赛推动专业建设和计算机领域创新人才培养体系改革、培育我国高端芯片及核心系统的技术突破与产业化后备人才为目标，是我国高校系统能力相关的高水平学科竞赛。目前，大赛设置CPU设计赛、操作系统赛、编译系统赛、数据库设计赛多个赛道。</p>
+<p><strong>开源之夏</strong></p>
+<p><a href="https://summer-ospp.ac.cn/">开源之夏</a></p>
+<p>开源之夏是由中国科学院软件研究所“开源软件供应链点亮计划”发起并长期支持的一项暑期开源活动，旨在鼓励在校学生积极参与开源软件的开发维护，培养和发掘更多优秀的开发者，促进优秀开源软件社区的蓬勃发展，助力开源软件供应链建设。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="其余常见问题与解决方案"><a class="header" href="#其余常见问题与解决方案">其余常见问题与解决方案</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="附录a使用-gitee-流水线信息进行调试"><a class="header" href="#附录a使用-gitee-流水线信息进行调试">附录A：使用 Gitee 流水线信息进行调试</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="附录b实验所用到的其余专业前置知识"><a class="header" href="#附录b实验所用到的其余专业前置知识">附录B：实验所用到的其余专业前置知识</a></h1>
