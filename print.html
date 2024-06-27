@@ -1372,17 +1372,358 @@ make save-test-results
 <p><a href="https://github.com/dunwu/algorithm-tutorial">ALGORITHM-TUTORIAL</a></p>
 <p>这是一个GitHub上的算法教程项目，包含了多种算法的实现和解释，适合希望提高算法能力的开发者。</p>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="第一题输出-hello-world"><a class="header" href="#第一题输出-hello-world">第一题：输出 Hello World！</a></h2>
+<p><strong>实验题目</strong></p>
+<p>补全代码框架，向控制台打印“Hello World！”</p>
+<p><strong>实验要求</strong></p>
+<ol>
+<li><strong>编写一个C程序</strong>：使用C语言编写一个简单的程序。</li>
+<li><strong>打印输出</strong>：在控制台（或命令行界面）上打印出“Hello, World!”这条消息。</li>
+</ol>
+<p><strong>实验代码框架</strong></p>
+<pre><code class="language-c">//01_helloworld.c
+
+#include &lt;stdio.h&gt;
+
+int main(){
+
+    // Print "Hello World!" to the console
+    
+    
+    
+
+    return 0;
+}
+</code></pre>
+<h3 id="实验解析"><a class="header" href="#实验解析">实验解析</a></h3>
+<p><strong>代码实现</strong></p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main() {
+    // 打印 "Hello, World!" 到控制台
+    printf("Hello, World!\n");
+
+    return 0;
+}
+</code></pre>
+<p><strong>代码解释</strong></p>
+<ul>
+<li><strong><code>#include &lt;stdio.h&gt;</code></strong>：这是一个预处理指令，用于包含标准输入输出头文件<code>stdio.h</code>。这个头文件包含了<code>printf</code>函数的声明，<code>printf</code>函数用于在控制台上输出文本。</li>
+<li><strong><code>int main()</code></strong>：这是C程序的主函数，程序从这里开始执行。<code>int</code>表示这个函数返回一个整数值。</li>
+<li><strong><code>printf("Hello, World!\n");</code></strong>：这是一个函数调用，<code>printf</code>是C标准库中的一个函数，用于格式化输出。在这个例子中，它被用来输出字符串“Hello, World!”。<code>\n</code>是一个转义字符，表示换行，使得下一次输出从新的一行开始。</li>
+<li><strong><code>return 0;</code></strong>：这是<code>main</code>函数的返回语句。在C语言中，<code>main</code>函数返回0通常表示程序正常结束。</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="第二题基本循环"><a class="header" href="#第二题基本循环">第二题：基本循环</a></h2>
+<p><strong>实验题目</strong></p>
+<p>编写一个C程序，打印出从1到10的整数序列。</p>
+<p>使用循环实现迭代，并且每次迭代结束后，通过标准输出打印当前的计数值，每个数值打印在新的一行上。</p>
+<p><strong>实验要求</strong></p>
+<ol>
+<li><strong>循环结构</strong>：使用循环（如<code>for</code>循环、<code>while</code>循环或<code>do-while</code>循环）来实现迭代。</li>
+<li><strong>打印输出</strong>：每次迭代结束后，通过标准输出（通常是终端或命令行界面）打印当前的计数值。</li>
+<li><strong>格式要求</strong>：每个数值打印在新的一行上。</li>
+</ol>
+<p><strong>实验代码框架</strong></p>
+<pre><code class="language-C">//02_loop.c
+
+#include &lt;stdio.h&gt;
+
+/**
+ * 编写一个C程序，打印出从1到10的整数序列。
+ * 使用循环实现迭代，并且每次迭代结束后，通过标准输出打印当前的计数值，每个数值打印在新的一行上。
+*/
+
+int main(void)
+{
+	//TODO
+
+	return 0;
+}
+</code></pre>
+<h3 id="实验解析-1"><a class="header" href="#实验解析-1">实验解析</a></h3>
+<p><strong>代码实现</strong></p>
+<h4 id="使用for循环实现"><a class="header" href="#使用for循环实现">使用<code>for</code>循环实现</a></h4>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    // 使用for循环打印1到10的整数
+    for (int i = 1; i &lt;= 10; i++) {
+        printf("%d\n", i);
+    }
+
+    return 0;
+}
+</code></pre>
+<h4 id="使用while循环实现"><a class="header" href="#使用while循环实现">使用<code>while</code>循环实现</a></h4>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int i = 1;
+    // 使用while循环打印1到10的整数
+    while (i &lt;= 10) {
+        printf("%d\n", i);
+        i++;
+    }
+
+    return 0;
+}
+</code></pre>
+<h4 id="使用do-while循环实现"><a class="header" href="#使用do-while循环实现">使用<code>do-while</code>循环实现</a></h4>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int i = 1;
+    // 使用do-while循环打印1到10的整数
+    do {
+        printf("%d\n", i);
+        i++;
+    } while (i &lt;= 10);
+
+    return 0;
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="第三题打印九九乘法表"><a class="header" href="#第三题打印九九乘法表">第三题：打印九九乘法表</a></h2>
+<p><strong>实验题目</strong></p>
+<p>编写一个C程序，打印出9x9乘法表的一部分。</p>
+<p>程序应该使用两个嵌套的 for 循环来实现。外层循环控制乘法表的行数，从1到9；内层循环控制每行中的列数，列数应该等于当前的行数。</p>
+<p>在每个内层循环中，程序应该打印出当前列数和行数的乘积，并且每个乘积后面跟随一个制表符 \t 以保持格式整齐。</p>
+<p>每行结束后，程序应该打印一个换行符 \n 以开始新的一行。</p>
+<p>参考输出格式 printf("%d*%d=%d\t", j, i, i * j);</p>
+<p><strong>实验要求</strong></p>
+<ol>
+<li><strong>使用嵌套循环</strong>：程序需要使用两个嵌套的<code>for</code>循环来实现乘法表的打印。</li>
+<li><strong>外层循环</strong>：外层循环控制乘法表的行数，从1到9。</li>
+<li><strong>内层循环</strong>：内层循环控制每行中的列数，列数应该等于当前的行数。</li>
+<li><strong>打印乘积</strong>：在每个内层循环中，程序应该打印出当前列数和行数的乘积，并且每个乘积后面跟随一个制表符<code>\t</code>以保持格式整齐。</li>
+<li><strong>换行</strong>：每行结束后，程序应该打印一个换行符<code>\n</code>以开始新的一行。</li>
+</ol>
+<p><strong>实验代码框架</strong></p>
+<pre><code class="language-c">//03_nested_loops.c
+
+#include &lt;stdio.h&gt;
+
+/**
+ * 题目描述：
+ * 编写一个C程序，打印出9x9乘法表的一部分。
+ * 程序应该使用两个嵌套的 for 循环来实现。外层循环控制乘法表的行数，从1到9；内层循环控制每行中的列数，列数应该等于当前的行数。
+ * 在每个内层循环中，程序应该打印出当前列数和行数的乘积，并且每个乘积后面跟随一个制表符 \t 以保持格式整齐。
+ * 每行结束后，程序应该打印一个换行符 \n 以开始新的一行。
+ * 参考输出格式 printf("%d*%d=%d\t", j, i, i * j);
+ */
+
+int main(void)
+{		
+	//TODO
+
+	return 0;
+}
+</code></pre>
+<h3 id="实验解析-2"><a class="header" href="#实验解析-2">实验解析</a></h3>
+<p><strong>代码实现</strong></p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    // 外层循环控制行数
+    for (int i = 1; i &lt;= 9; i++) {
+        // 内层循环控制列数，列数等于当前行数
+        for (int j = 1; j &lt;= i; j++) {
+            // 打印乘积和制表符
+            printf("%d*%d=%d\t", j, i, i * j);
+        }
+        // 每行结束打印换行符
+        printf("\n");
+    }
+
+    return 0;
+}
+</code></pre>
+<p><strong>代码解释</strong></p>
+<ul>
+<li><strong>外层循环</strong>：<code>for (int i = 1; i &lt;= 9; i++)</code>，这个循环从1到9，代表乘法表的行数。</li>
+<li><strong>内层循环</strong>：<code>for (int j = 1; j &lt;= i; j++)</code>，这个循环的次数由外层循环的当前值<code>i</code>决定，即每行的列数等于当前的行数。</li>
+<li><strong>打印乘积</strong>：<code>printf("%d*%d=%d\t", j, i, i * j);</code>，这个语句打印出当前列数<code>j</code>和行数<code>i</code>的乘积，并且每个乘积后面跟随一个制表符<code>\t</code>，以保持输出格式整齐。</li>
+<li><strong>换行</strong>：<code>printf("\n");</code>，这个语句在每行结束后打印一个换行符<code>\n</code>，以开始新的一行。</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="第四题求素数"><a class="header" href="#第四题求素数">第四题：求素数</a></h2>
+<p><strong>实验题目</strong></p>
+<p>查找100以内的最大素数</p>
+<p><strong>实验要求</strong></p>
+<ol>
+<li><strong>查找素数</strong>：程序需要查找100以内的所有素数。</li>
+<li><strong>找到最大素数</strong>：在找到的所有素数中，确定最大的一个。</li>
+</ol>
+<p><strong>实验代码框架</strong></p>
+<pre><code class="language-c">// 04_prime_number.c
+
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+//查找100以内的最大素数
+
+int main(void)
+{
+	int i, j;
+	int max = 0;
+
+	for (i = 1; i &lt;= 100; i++)
+	{
+		//TODO
+	}
+
+	printf("max = %d\n", max);
+
+	return 0;
+}
+</code></pre>
+<h3 id="实验解析-3"><a class="header" href="#实验解析-3">实验解析</a></h3>
+<p><strong>代码实现</strong></p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main(void)
+{
+    int i, j;
+    int max = 0;
+
+    for (i = 1; i &lt;= 100; i++)
+    {
+        // 检查i是否为素数
+        int isPrime = 1; // 假设i是素数
+        for (j = 2; j &lt;= sqrt(i); j++)
+        {
+            if (i % j == 0)
+            {
+                isPrime = 0; // i不是素数
+                break;
+            }
+        }
+        // 如果i是素数且大于当前的最大素数，更新max
+        if (isPrime &amp;&amp; i &gt; max)
+        {
+            max = i;
+        }
+    }
+
+    printf("max = %d\n", max);
+
+    return 0;
+}
+</code></pre>
+<p><strong>代码解释</strong></p>
+<ul>
+<li><strong>外层循环</strong>：<code>for (i = 1; i &lt;= 100; i++)</code>，这个循环遍历1到100之间的所有数字。</li>
+<li><strong>内层循环</strong>：<code>for (j = 2; j &lt;= sqrt(i); j++)</code>，这个循环用于检查当前的<code>i</code>是否为素数。内层循环从2开始，到<code>sqrt(i)</code>结束，因为一个数如果可以被小于或等于其平方根的数整除，那么它就不是素数。</li>
+<li><strong>检查素数</strong>：<code>if (i % j == 0)</code>，如果<code>i</code>能被<code>j</code>整除，则<code>i</code>不是素数，将<code>isPrime</code>设置为0，并跳出内层循环。</li>
+<li><strong>更新最大素数</strong>：<code>if (isPrime &amp;&amp; i &gt; max)</code>，如果<code>i</code>是素数且大于当前的最大素数<code>max</code>，则更新<code>max</code>为<code>i</code>。</li>
+<li><strong>输出结果</strong>：<code>printf("max = %d\n", max);</code>，循环结束后，打印出找到的最大素数。</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="第五题约瑟夫环"><a class="header" href="#第五题约瑟夫环">第五题：约瑟夫环</a></h2>
+<p><strong>实验题目</strong></p>
+<p>给定100个人站成一圈，从第1个人开始依次报数。</p>
+<p>每数到3的人将会被淘汰，然后继续从下一个人开始报数。</p>
+<p>这个过程会一直持续，直到所有的人都被淘汰。</p>
+<p>请编写一个C语言程序来模拟这个过程，并且输出每一个被淘汰人的编号。</p>
+<p>要求：输出每一个被淘汰人的编号，每淘汰一个人输出一行，格式为："%d out \n"(每输出一次换行)</p>
+<p><strong>实验要求</strong></p>
+<ol>
+<li><strong>模拟约瑟夫环</strong>：程序需要模拟100个人围成一圈，从第1个人开始报数，每数到3的人被淘汰的过程。</li>
+<li><strong>输出淘汰顺序</strong>：程序需要输出每一个被淘汰人的编号，每淘汰一个人输出一行，格式为：<code>"%d out \n"</code>。</li>
+</ol>
+<p><strong>实验代码框架</strong></p>
+<pre><code class="language-c">// 05_josephus_ring.c
+
+#include &lt;stdio.h&gt;
+
+/**
+ * 给定100个人站成一圈，从第1个人开始依次报数。
+ * 每数到3的人将会被淘汰，然后继续从下一个人开始报数。
+ * 这个过程会一直持续，直到所有的人都被淘汰。
+ * 请编写一个C语言程序来模拟这个过程，并且输出每一个被淘汰人的编号。
+ * 要求：输出每一个被淘汰人的编号，每淘汰一个人输出一行，格式为："%d out \n"(每输出一次换行)
+*/
+
+#define ALL_NUM    	100 
+#define COUNT_NUM	3
+#define OUT_NUM		3
+
+/* people id array such as (1,2,3,4,5,6) */
+int people[ALL_NUM];
+
+int main(void)
+{
+	int left;	/* 剩余人数 */
+	int pos;	/* 当前报数位置 */
+	int step;	/* 当前报数 */
+
+	//TODO
+	
+	
+
+	return 0;
+}
+</code></pre>
+<h3 id="实验解析-4"><a class="header" href="#实验解析-4">实验解析</a></h3>
+<p><strong>代码实现</strong></p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#define ALL_NUM    100  // 总人数
+#define COUNT_NUM  3    // 报数到3的人被淘汰
+#define OUT_NUM    3    // 淘汰的数字
+
+int people[ALL_NUM];  // 人员编号数组
+
+int main(void)
+{
+    int left = ALL_NUM; // 剩余人数
+    int pos = 0;        // 当前报数位置
+    int step = 0;       // 当前报数
+
+    while (left &gt; 0)
+    {
+        // 模拟报数
+        step++;
+        if (step == COUNT_NUM)
+        {
+            // 输出被淘汰的人的编号
+            printf("%d out\n", people[pos] + 1);
+            // 淘汰这个人
+            for (int i = pos; i &lt; left - 1; i++)
+            {
+                people[i] = people[i + 1];
+            }
+            left--;
+            step = 0; // 重置报数
+        }
+        // 移动到下一个人
+        pos = (pos + 1) % left;
+    }
+
+    return 0;
+}
+</code></pre>
+<p><strong>代码解释</strong></p>
+<ul>
+<li><strong>初始化</strong>：定义了总人数<code>ALL_NUM</code>，淘汰数字<code>COUNT_NUM</code>，以及一个数组<code>people</code>来存储每个人的编号。</li>
+<li><strong>模拟报数</strong>：使用一个循环来模拟报数过程，直到所有人都被淘汰。</li>
+<li><strong>报数和淘汰</strong>：<code>step</code>变量用于记录当前报数，当<code>step</code>等于<code>COUNT_NUM</code>时，表示当前报数的人应该被淘汰。此时，输出该人的编号，并从数组中移除这个人，然后重置<code>step</code>。</li>
+<li><strong>移动到下一个人</strong>：使用<code>pos = (pos + 1) % left</code>来移动到下一个人，这里使用了取模运算来保证在数组长度变化时，<code>pos</code>始终指向有效的位置。</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div><h2 id="导学阶段实验相关问题与解决方案"><a class="header" href="#导学阶段实验相关问题与解决方案">导学阶段实验相关问题与解决方案</a></h2>
+<p>在导学阶段的实验中，学生们可能会遇到各种问题，这些问题可能涉及代码实现、测试案例管理以及实验顺序等方面。以下是对这些常见问题的详细解答和建议解决方案：</p>
 <h3 id="1我按照题目的要求完成了代码但是并没有通过测试"><a class="header" href="#1我按照题目的要求完成了代码但是并没有通过测试">1.我按照题目的要求完成了代码，但是并没有通过测试</a></h3>
-<p>请注意题目描述中对于输出格式的规定，按照要求的格式进行输出。</p>
+<p>当你发现自己的代码没有通过测试时，首先应该回顾题目描述，特别是关于输出格式的部分。确保你的程序输出严格遵循了题目要求的格式。例如，如果题目要求输出结果时每行一个数字，并且每个数字后面跟着一个空格，那么你的程序输出也应该如此。如果输出格式不正确，即使算法逻辑正确，也可能导致测试失败。因此，仔细检查并调整输出格式是解决此类问题的第一步。</p>
 <h3 id="2我不小心破坏了测例怎么办"><a class="header" href="#2我不小心破坏了测例怎么办">2.我不小心破坏了测例怎么办</a></h3>
-<p>可以重新从模板仓库 fork，或者直接获取测例。</p>
+<p>在实验过程中，如果你不小心修改或删除了测试案例，不必过于担心。你可以选择以下两种方法之一来恢复测试案例：</p>
+<ul>
+<li><strong>重新从模板仓库 fork</strong>：如果你之前是从一个模板仓库 fork 出来的，你可以再次 fork 一个新的仓库，这样你将获得一个包含完整测试案例的新副本。</li>
+<li><strong>直接获取测例</strong>：如果模板仓库提供了测试案例的下载，你可以直接下载最新的测试案例文件，并将其添加到你的项目中。</li>
+</ul>
+<p>这两种方法都可以帮助你快速恢复测试环境，继续进行实验。</p>
 <h3 id="3是否可以不按照习题文件的顺序完成习题"><a class="header" href="#3是否可以不按照习题文件的顺序完成习题">3.是否可以不按照习题文件的顺序完成习题</a></h3>
-<p>可以。</p>
+<p>答案是肯定的。虽然习题文件可能按照一定的逻辑顺序排列，但这并不意味着你必须严格按照这个顺序来完成习题。你可以根据自己的学习进度和理解程度，选择先完成你认为更重要的或者更感兴趣的习题。这种灵活性可以帮助你更好地掌握知识点，并根据自己的学习节奏进行调整。</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="提交成绩"><a class="header" href="#提交成绩">提交成绩</a></h1>
 <p>经过上一章的学习与讲解，相信大家都已经顺利完成了实验，本章将会引导大家提交实验的成绩。</p>
 <ul>

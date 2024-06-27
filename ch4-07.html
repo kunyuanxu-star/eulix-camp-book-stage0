@@ -174,6 +174,78 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="第四题求素数"><a class="header" href="#第四题求素数">第四题：求素数</a></h2>
+<p><strong>实验题目</strong></p>
+<p>查找100以内的最大素数</p>
+<p><strong>实验要求</strong></p>
+<ol>
+<li><strong>查找素数</strong>：程序需要查找100以内的所有素数。</li>
+<li><strong>找到最大素数</strong>：在找到的所有素数中，确定最大的一个。</li>
+</ol>
+<p><strong>实验代码框架</strong></p>
+<pre><code class="language-c">// 04_prime_number.c
+
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+//查找100以内的最大素数
+
+int main(void)
+{
+	int i, j;
+	int max = 0;
+
+	for (i = 1; i &lt;= 100; i++)
+	{
+		//TODO
+	}
+
+	printf("max = %d\n", max);
+
+	return 0;
+}
+</code></pre>
+<h3 id="实验解析"><a class="header" href="#实验解析">实验解析</a></h3>
+<p><strong>代码实现</strong></p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main(void)
+{
+    int i, j;
+    int max = 0;
+
+    for (i = 1; i &lt;= 100; i++)
+    {
+        // 检查i是否为素数
+        int isPrime = 1; // 假设i是素数
+        for (j = 2; j &lt;= sqrt(i); j++)
+        {
+            if (i % j == 0)
+            {
+                isPrime = 0; // i不是素数
+                break;
+            }
+        }
+        // 如果i是素数且大于当前的最大素数，更新max
+        if (isPrime &amp;&amp; i &gt; max)
+        {
+            max = i;
+        }
+    }
+
+    printf("max = %d\n", max);
+
+    return 0;
+}
+</code></pre>
+<p><strong>代码解释</strong></p>
+<ul>
+<li><strong>外层循环</strong>：<code>for (i = 1; i &lt;= 100; i++)</code>，这个循环遍历1到100之间的所有数字。</li>
+<li><strong>内层循环</strong>：<code>for (j = 2; j &lt;= sqrt(i); j++)</code>，这个循环用于检查当前的<code>i</code>是否为素数。内层循环从2开始，到<code>sqrt(i)</code>结束，因为一个数如果可以被小于或等于其平方根的数整除，那么它就不是素数。</li>
+<li><strong>检查素数</strong>：<code>if (i % j == 0)</code>，如果<code>i</code>能被<code>j</code>整除，则<code>i</code>不是素数，将<code>isPrime</code>设置为0，并跳出内层循环。</li>
+<li><strong>更新最大素数</strong>：<code>if (isPrime &amp;&amp; i &gt; max)</code>，如果<code>i</code>是素数且大于当前的最大素数<code>max</code>，则更新<code>max</code>为<code>i</code>。</li>
+<li><strong>输出结果</strong>：<code>printf("max = %d\n", max);</code>，循环结束后，打印出找到的最大素数。</li>
+</ul>
 
                     </main>
 

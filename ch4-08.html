@@ -174,6 +174,96 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="第五题约瑟夫环"><a class="header" href="#第五题约瑟夫环">第五题：约瑟夫环</a></h2>
+<p><strong>实验题目</strong></p>
+<p>给定100个人站成一圈，从第1个人开始依次报数。</p>
+<p>每数到3的人将会被淘汰，然后继续从下一个人开始报数。</p>
+<p>这个过程会一直持续，直到所有的人都被淘汰。</p>
+<p>请编写一个C语言程序来模拟这个过程，并且输出每一个被淘汰人的编号。</p>
+<p>要求：输出每一个被淘汰人的编号，每淘汰一个人输出一行，格式为："%d out \n"(每输出一次换行)</p>
+<p><strong>实验要求</strong></p>
+<ol>
+<li><strong>模拟约瑟夫环</strong>：程序需要模拟100个人围成一圈，从第1个人开始报数，每数到3的人被淘汰的过程。</li>
+<li><strong>输出淘汰顺序</strong>：程序需要输出每一个被淘汰人的编号，每淘汰一个人输出一行，格式为：<code>"%d out \n"</code>。</li>
+</ol>
+<p><strong>实验代码框架</strong></p>
+<pre><code class="language-c">// 05_josephus_ring.c
+
+#include &lt;stdio.h&gt;
+
+/**
+ * 给定100个人站成一圈，从第1个人开始依次报数。
+ * 每数到3的人将会被淘汰，然后继续从下一个人开始报数。
+ * 这个过程会一直持续，直到所有的人都被淘汰。
+ * 请编写一个C语言程序来模拟这个过程，并且输出每一个被淘汰人的编号。
+ * 要求：输出每一个被淘汰人的编号，每淘汰一个人输出一行，格式为："%d out \n"(每输出一次换行)
+*/
+
+#define ALL_NUM    	100 
+#define COUNT_NUM	3
+#define OUT_NUM		3
+
+/* people id array such as (1,2,3,4,5,6) */
+int people[ALL_NUM];
+
+int main(void)
+{
+	int left;	/* 剩余人数 */
+	int pos;	/* 当前报数位置 */
+	int step;	/* 当前报数 */
+
+	//TODO
+	
+	
+
+	return 0;
+}
+</code></pre>
+<h3 id="实验解析"><a class="header" href="#实验解析">实验解析</a></h3>
+<p><strong>代码实现</strong></p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+#define ALL_NUM    100  // 总人数
+#define COUNT_NUM  3    // 报数到3的人被淘汰
+#define OUT_NUM    3    // 淘汰的数字
+
+int people[ALL_NUM];  // 人员编号数组
+
+int main(void)
+{
+    int left = ALL_NUM; // 剩余人数
+    int pos = 0;        // 当前报数位置
+    int step = 0;       // 当前报数
+
+    while (left &gt; 0)
+    {
+        // 模拟报数
+        step++;
+        if (step == COUNT_NUM)
+        {
+            // 输出被淘汰的人的编号
+            printf("%d out\n", people[pos] + 1);
+            // 淘汰这个人
+            for (int i = pos; i &lt; left - 1; i++)
+            {
+                people[i] = people[i + 1];
+            }
+            left--;
+            step = 0; // 重置报数
+        }
+        // 移动到下一个人
+        pos = (pos + 1) % left;
+    }
+
+    return 0;
+}
+</code></pre>
+<p><strong>代码解释</strong></p>
+<ul>
+<li><strong>初始化</strong>：定义了总人数<code>ALL_NUM</code>，淘汰数字<code>COUNT_NUM</code>，以及一个数组<code>people</code>来存储每个人的编号。</li>
+<li><strong>模拟报数</strong>：使用一个循环来模拟报数过程，直到所有人都被淘汰。</li>
+<li><strong>报数和淘汰</strong>：<code>step</code>变量用于记录当前报数，当<code>step</code>等于<code>COUNT_NUM</code>时，表示当前报数的人应该被淘汰。此时，输出该人的编号，并从数组中移除这个人，然后重置<code>step</code>。</li>
+<li><strong>移动到下一个人</strong>：使用<code>pos = (pos + 1) % left</code>来移动到下一个人，这里使用了取模运算来保证在数组长度变化时，<code>pos</code>始终指向有效的位置。</li>
+</ul>
 
                     </main>
 

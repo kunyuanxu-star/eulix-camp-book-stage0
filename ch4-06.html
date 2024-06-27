@@ -174,6 +174,68 @@
                 <div id="content" class="content">
                     <main>
                         <h2 id="第三题打印九九乘法表"><a class="header" href="#第三题打印九九乘法表">第三题：打印九九乘法表</a></h2>
+<p><strong>实验题目</strong></p>
+<p>编写一个C程序，打印出9x9乘法表的一部分。</p>
+<p>程序应该使用两个嵌套的 for 循环来实现。外层循环控制乘法表的行数，从1到9；内层循环控制每行中的列数，列数应该等于当前的行数。</p>
+<p>在每个内层循环中，程序应该打印出当前列数和行数的乘积，并且每个乘积后面跟随一个制表符 \t 以保持格式整齐。</p>
+<p>每行结束后，程序应该打印一个换行符 \n 以开始新的一行。</p>
+<p>参考输出格式 printf("%d*%d=%d\t", j, i, i * j);</p>
+<p><strong>实验要求</strong></p>
+<ol>
+<li><strong>使用嵌套循环</strong>：程序需要使用两个嵌套的<code>for</code>循环来实现乘法表的打印。</li>
+<li><strong>外层循环</strong>：外层循环控制乘法表的行数，从1到9。</li>
+<li><strong>内层循环</strong>：内层循环控制每行中的列数，列数应该等于当前的行数。</li>
+<li><strong>打印乘积</strong>：在每个内层循环中，程序应该打印出当前列数和行数的乘积，并且每个乘积后面跟随一个制表符<code>\t</code>以保持格式整齐。</li>
+<li><strong>换行</strong>：每行结束后，程序应该打印一个换行符<code>\n</code>以开始新的一行。</li>
+</ol>
+<p><strong>实验代码框架</strong></p>
+<pre><code class="language-c">//03_nested_loops.c
+
+#include &lt;stdio.h&gt;
+
+/**
+ * 题目描述：
+ * 编写一个C程序，打印出9x9乘法表的一部分。
+ * 程序应该使用两个嵌套的 for 循环来实现。外层循环控制乘法表的行数，从1到9；内层循环控制每行中的列数，列数应该等于当前的行数。
+ * 在每个内层循环中，程序应该打印出当前列数和行数的乘积，并且每个乘积后面跟随一个制表符 \t 以保持格式整齐。
+ * 每行结束后，程序应该打印一个换行符 \n 以开始新的一行。
+ * 参考输出格式 printf("%d*%d=%d\t", j, i, i * j);
+ */
+
+int main(void)
+{		
+	//TODO
+
+	return 0;
+}
+</code></pre>
+<h3 id="实验解析"><a class="header" href="#实验解析">实验解析</a></h3>
+<p><strong>代码实现</strong></p>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    // 外层循环控制行数
+    for (int i = 1; i &lt;= 9; i++) {
+        // 内层循环控制列数，列数等于当前行数
+        for (int j = 1; j &lt;= i; j++) {
+            // 打印乘积和制表符
+            printf("%d*%d=%d\t", j, i, i * j);
+        }
+        // 每行结束打印换行符
+        printf("\n");
+    }
+
+    return 0;
+}
+</code></pre>
+<p><strong>代码解释</strong></p>
+<ul>
+<li><strong>外层循环</strong>：<code>for (int i = 1; i &lt;= 9; i++)</code>，这个循环从1到9，代表乘法表的行数。</li>
+<li><strong>内层循环</strong>：<code>for (int j = 1; j &lt;= i; j++)</code>，这个循环的次数由外层循环的当前值<code>i</code>决定，即每行的列数等于当前的行数。</li>
+<li><strong>打印乘积</strong>：<code>printf("%d*%d=%d\t", j, i, i * j);</code>，这个语句打印出当前列数<code>j</code>和行数<code>i</code>的乘积，并且每个乘积后面跟随一个制表符<code>\t</code>，以保持输出格式整齐。</li>
+<li><strong>换行</strong>：<code>printf("\n");</code>，这个语句在每行结束后打印一个换行符<code>\n</code>，以开始新的一行。</li>
+</ul>
 
                     </main>
 
