@@ -5,3 +5,6 @@ multilingual = false
 src = "src"
 title = "第一期傲来操作系统训练营导学阶段引导"
 
+[output.html]
+
+[output.pdf]
